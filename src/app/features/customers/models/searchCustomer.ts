@@ -1,5 +1,5 @@
 export interface SearchCustomer {
-  id: number;
+  nationalityId: number;
   customerId: number;
   gsmNumber: string;
   firstName: string;

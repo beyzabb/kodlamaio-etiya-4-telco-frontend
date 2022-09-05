@@ -40,7 +40,7 @@ export class CreateCustomerComponent implements OnInit {
       middleName: [this.customer.middleName],
       lastName: [this.customer.lastName, Validators.required],
       birthDate: [this.customer.birthDate, Validators.required],
-      gender: [this.customer.gender ?? 'Female', Validators.required],
+      gender: [this.customer.gender, Validators.required],
       fatherName: [this.customer.fatherName],
       motherName: [this.customer.motherName],
       nationalityId: [this.customer.nationalityId, Validators.required],
