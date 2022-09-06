@@ -28,8 +28,19 @@
                     etiyaInput="dark"
                     class="e-contact-input"
                     formControlName="email"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow && contactForm.controls['email'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="isShow && contactForm.controls['email'].errors"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-top: 11px; margin-left: 400px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
             <div class="col-12 col-lg-6 mb-5">
@@ -43,8 +54,19 @@
                     etiyaInput="dark"
                     class="e-contact-input"
                     formControlName="homePhone"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow && contactForm.controls['homePhone'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="isShow && contactForm.controls['homePhone'].errors"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-top: 11px; margin-left: 400px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
             <div class="col-12 col-lg-6 mb-5">
@@ -60,8 +82,19 @@
                     etiyaInput="dark"
                     class="e-contact-input"
                     formControlName="mobilePhone"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow && contactForm.controls['mobilePhone'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="isShow && contactForm.controls['mobilePhone'].errors"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-top: 11px; margin-left: 400px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
             <div class="col-12 col-lg-6 mb-5">
@@ -75,8 +108,19 @@
                     etiyaInput="dark"
                     class="e-contact-input"
                     formControlName="fax"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow && contactForm.controls['fax'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="isShow && contactForm.controls['fax'].errors"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-top: 11px; margin-left: 400px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
           </div>

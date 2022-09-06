@@ -38,21 +38,35 @@
 
       <label class="e-label">ACCOUNT NUMBER</label>
       <input
-        type="text"
+        type="number"
         etiyaInput="dark"
         formControlName="accountNumber"
+        onKeyPress="if(this.value.length==10) return false;"
         #accountNumber
       />
+      <div
+        *ngIf="
+          accountNumber.value.length > 0 && accountNumber.value.length < 10
+        "
+        style="color: red; margin-left: 15px; margin-top: -15px"
+      >
+        You entered a missing number.
+      </div>
 
       <label class="e-label">GSM NUMBER</label>
       <input
-        pattern="/^-?\d+\.?\d*$/"
-        onKeyPress="if(this.value.length==10) return false;"
+        onKeyPress="if(this.value.length==11) return false;"
         type="number"
         etiyaInput="dark"
         formControlName="gsmNumber"
         #gsmNumber
       />
+      <div
+        *ngIf="gsmNumber.value.length > 0 && gsmNumber.value.length < 11"
+        style="color: red; margin-left: 15px; margin-top: -15px"
+      >
+        You entered a missing number.
+      </div>
 
       <label class="e-label">FIRST NAME</label>
       <input

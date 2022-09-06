@@ -24,6 +24,7 @@
 }
 ::ng-deep .table.e-table .table-body tr th a:hover {
   cursor: pointer;
+  border-bottom: 1px solid white;
 }
 .all-results {
   font-family: 'Anybody';

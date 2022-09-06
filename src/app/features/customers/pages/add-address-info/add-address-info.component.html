@@ -31,6 +31,10 @@
                         name="gender"
                         id="gender"
                         formControlName="city"
+                        [ngClass]="{
+                          'invalid-input':
+                            isShow && addressForm.controls['city'].errors
+                        }"
                       >
                         <option selected disabled hidden value="">
                           Choose a city
@@ -41,15 +45,13 @@
                       </select>
                     </div>
                   </div>
-                  <div
-                    *ngIf="
-                      addressForm.get('city')?.hasError('required') &&
-                      addressForm.get('city')?.touched
-                    "
-                    style="color: red; margin-left: 355px"
+                  <small
+                    *ngIf="isShow && addressForm.controls['city'].errors"
+                    class="p-error block ng-invalid ng-dirty"
+                    style="color: red; margin-left: 350px; margin-top: 11px"
                   >
-                    Compulsory fields must be filled
-                  </div>
+                    compulsory fields must be filled.
+                  </small>
                 </div>
               </div>
               <div class="col-12 col-xl-7">
@@ -65,17 +67,19 @@
                       type="text"
                       etiyaInput="dark"
                       formControlName="flatNumber"
+                      [ngClass]="{
+                        'invalid-input':
+                          isShow && addressForm.controls['flatNumber'].errors
+                      }"
                     />
                   </div>
-                  <div
-                    *ngIf="
-                      addressForm.get('flatNumber')?.hasError('required') &&
-                      addressForm.get('flatNumber')?.touched
-                    "
-                    style="color: red; margin-left: 500px"
+                  <small
+                    *ngIf="isShow && addressForm.controls['flatNumber'].errors"
+                    class="p-error block ng-invalid ng-dirty"
+                    style="color: red; margin-left: 500px; margin-top: 11px"
                   >
-                    Compulsory fields must be filled
-                  </div>
+                    compulsory fields must be filled.
+                  </small>
                 </div>
               </div>
 
@@ -91,17 +95,19 @@
                       type="text"
                       etiyaInput="dark"
                       formControlName="street"
+                      [ngClass]="{
+                        'invalid-input':
+                          isShow && addressForm.controls['street'].errors
+                      }"
                     />
                   </div>
-                  <div
-                    *ngIf="
-                      addressForm.get('street')?.hasError('required') &&
-                      addressForm.get('street')?.touched
-                    "
-                    style="color: red; margin-left: 353px; margin-top: 5px"
+                  <small
+                    *ngIf="isShow && addressForm.controls['street'].errors"
+                    class="p-error block ng-invalid ng-dirty"
+                    style="color: red; margin-left: 350px; margin-top: 11px"
                   >
-                    Compulsory fields must be filled
-                  </div>
+                    compulsory fields must be filled.
+                  </small>
                 </div>
               </div>
               <div class="col-12">
@@ -116,17 +122,19 @@
                       class="e-address-desc"
                       placeholder=""
                       formControlName="description"
+                      [ngClass]="{
+                        'invalid-input':
+                          isShow && addressForm.controls['description'].errors
+                      }"
                     ></textarea>
                   </div>
-                  <div
-                    *ngIf="
-                      addressForm.get('description')?.hasError('required') &&
-                      addressForm.get('description')?.touched
-                    "
-                    style="color: red; margin-top: 5px"
+                  <small
+                    *ngIf="isShow && addressForm.controls['description'].errors"
+                    class="p-error block ng-invalid ng-dirty"
+                    style="color: red; margin-top: 11px"
                   >
-                    Compulsory fields must be filled
-                  </div>
+                    compulsory fields must be filled.
+                  </small>
                 </div>
               </div>
             </div>

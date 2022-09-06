@@ -20,6 +20,7 @@ export class CreateCustomerComponent implements OnInit {
   profileForm!: FormGroup;
   createCustomerModel$!: Observable<Customer>;
   customer!: Customer;
+  isShow: Boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private customerService: CustomersService,
@@ -44,59 +45,51 @@ export class CreateCustomerComponent implements OnInit {
         this.customer.birthDate,
         [Validators.required],
 
-        { validator: this.ageCheck('birthDate') },
+        // { validator: this.ageCheck('birthDate') },
       ],
       gender: [this.customer.gender || '', Validators.required],
       fatherName: [this.customer.fatherName],
       motherName: [this.customer.motherName],
       nationalityId: [
         this.customer.nationalityId,
-        Validators.required,
-        Validators.minLength(11),
+        [Validators.pattern('^[0-9]{11}$'), Validators.required],
       ],
     });
   }
 
-  nextPage() {
+  goNextPage() {
     if (this.profileForm.valid) {
+      this.isShow = false;
       this.customerService.setDemographicInfoToStore(this.profileForm.value);
       this.router.navigateByUrl('/dashboard/customers/list-address-info');
+    } else {
+      this.isShow = true;
     }
   }
 
-  goNextPage() {}
+  // getAge(date: string): number {
+  //   let today = new Date();
+  //   let birthDate = new Date(date);
+  //   let age = today.getFullYear() - birthDate.getFullYear();
+  //   let month = today.getMonth() - birthDate.getMonth();
+  //   if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+  //     age--;
+  //     console.log(age, 'birthdate', birthDate);
+  //   }
+  //   return age;
+  // }
+  // ageCheck(controlName: string): ValidatorFn {
+  //   return (controls: AbstractControl) => {
+  //     const control = controls.get(controlName);
 
-  IsPropertyInvalid(name: string) {
-    return (
-      this.profileForm.get(name)?.touched &&
-      this.profileForm.get(name)?.hasError('required') &&
-      this.profileForm.get(name)?.dirty
-    );
-  }
-
-  getAge(date: string): number {
-    let today = new Date();
-    let birthDate = new Date(date);
-    let age = today.getFullYear() - birthDate.getFullYear();
-    let month = today.getMonth() - birthDate.getMonth();
-    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-      console.log(age, 'birthdate', birthDate);
-    }
-    return age;
-  }
-  ageCheck(controlName: string): ValidatorFn {
-    return (controls: AbstractControl) => {
-      const control = controls.get(controlName);
-
-      if (control?.errors && !control.errors['under18']) {
-        return null;
-      }
-      if (this.getAge(control?.value) <= 18) {
-        return { under18: true };
-      } else {
-        return null;
-      }
-    };
-  }
+  //     if (control?.errors && !control.errors['under18']) {
+  //       return null;
+  //     }
+  //     if (this.getAge(control?.value) <= 18) {
+  //       return { under18: true };
+  //     } else {
+  //       return null;
+  //     }
+  //   };
+  // }
 }

@@ -30,8 +30,20 @@
                     type="text"
                     etiyaInput="dark"
                     formControlName="firstName"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow && profileForm.controls['firstName'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="isShow && profileForm.controls['firstName'].errors"
+                  id="lastName-help"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 380px; margin-top: -20px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
             <div class="col-12 col-lg-6 d=flex justify-content-start mb-5">
@@ -68,15 +80,16 @@
                     formControlName="lastName"
                     aria-describedby="lastName-help"
                     [ngClass]="{
-                      'invalid-input': IsPropertyInvalid('lastName')
+                      'invalid-input':
+                        isShow && profileForm.controls['lastName'].errors
                     }"
                   />
                 </div>
                 <small
-                  *ngIf="IsPropertyInvalid('lastName')"
+                  *ngIf="isShow && profileForm.controls['lastName'].errors"
                   id="lastName-help"
                   class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-left: 370px; margin-top: -11px"
+                  style="color: red; margin-left: 380px; margin-top: -20px"
                 >
                   compulsory fields must be filled.
                 </small>
@@ -96,8 +109,19 @@
                     type="date"
                     etiyaInput="dark"
                     formControlName="birthDate"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow && profileForm.controls['birthDate'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="isShow && profileForm.controls['birthDate'].errors"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 380px; margin-top: -20px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
             <div class="col-12 col-lg-6 d=flex justify-content-start mb-5">
@@ -111,13 +135,29 @@
                   class="col-12 col-lg-8 d-flex justify-content-lg-start align-items-center"
                 >
                   <div class="e-dropdown">
-                    <select name="gender" id="gender" formControlName="gender">
+                    <select
+                      name="gender"
+                      id="gender"
+                      formControlName="gender"
+                      [ngClass]="{
+                        'invalid-input':
+                          isShow && profileForm.controls['gender'].errors
+                      }"
+                    >
                       <option selected disabled hidden value="">Select</option>
                       <option value="Female">Female</option>
                       <option value="Male">Male</option>
                     </select>
                   </div>
                 </div>
+                <small
+                  *ngIf="isShow && profileForm.controls['gender'].errors"
+                  id="lastName-help"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 380px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
             <div class="col-12 col-lg-6 d=flex justify-content-start mb-5">
@@ -171,8 +211,20 @@
                     etiyaInput="dark"
                     formControlName="nationalityId"
                     onKeyPress="if(this.value.length==11) return false;"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow && profileForm.controls['nationalityId'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="isShow && profileForm.controls['nationalityId'].errors"
+                  id="lastName-help"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 380px; margin-top: -20px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
             <div class="d-flex justify-content-center">
