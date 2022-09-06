@@ -31,15 +31,15 @@
                     etiyaInput="dark"
                     formControlName="firstName"
                   />
-                  <div
-                    *ngIf="
-                      profileForm.get('firstName')?.hasError('required') &&
-                      profileForm.get('firstName')?.touched
-                    "
-                    style="color: red; margin-left: 15px; margin-top: -15px"
-                  >
-                    Compulsory fields must be filled.
-                  </div>
+                </div>
+                <div
+                  *ngIf="
+                    profileForm.get('firstName')?.hasError('required') &&
+                    profileForm.get('firstName')?.touched
+                  "
+                  style="color: red; margin-left: 370px; margin-top: -11px"
+                >
+                  compulsory fields must be filled.
                 </div>
               </div>
             </div>
@@ -77,6 +77,15 @@
                     formControlName="lastName"
                   />
                 </div>
+                <div
+                  *ngIf="
+                    profileForm.get('lastName')?.hasError('required') &&
+                    profileForm.get('lastName')?.touched
+                  "
+                  style="color: red; margin-left: 370px; margin-top: -11px"
+                >
+                  compulsory fields must be filled.
+                </div>
               </div>
             </div>
             <div class="col-12 col-lg-6 d=flex justify-content-start mb-5">
@@ -109,7 +118,8 @@
                 >
                   <div class="e-dropdown">
                     <select name="gender" id="gender" formControlName="gender">
-                      <option selected value="Female">Female</option>
+                      <option selected disabled hidden value="">Select</option>
+                      <option value="Female">Female</option>
                       <option value="Male">Male</option>
                     </select>
                   </div>

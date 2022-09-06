@@ -41,6 +41,15 @@
                       </select>
                     </div>
                   </div>
+                  <div
+                    *ngIf="
+                      addressForm.get('city')?.hasError('required') &&
+                      addressForm.get('city')?.touched
+                    "
+                    style="color: red; margin-left: 15px; margin-top: -15px"
+                  >
+                    Compulsory fields must be filled
+                  </div>
                 </div>
               </div>
               <div class="col-12 col-xl-7">
@@ -50,6 +59,7 @@
                       >House/Flat Number<span class="e-star">*</span>
                     </label>
                   </div>
+
                   <div class="col-12 col-lg-8 e-address-col-center">
                     <input
                       type="text"
@@ -58,6 +68,15 @@
                     />
                   </div>
                 </div>
+              </div>
+              <div
+                *ngIf="
+                  addressForm.get('flatNumber')?.hasError('required') &&
+                  addressForm.get('flatNumber')?.touched
+                "
+                style="color: red; margin-left: 15px; margin-top: -15px"
+              >
+                Compulsory fields must be filled
               </div>
               <div class="col-12 col-xl-5">
                 <div class="row e-address-input">
@@ -72,6 +91,15 @@
                       etiyaInput="dark"
                       formControlName="street"
                     />
+                  </div>
+                  <div
+                    *ngIf="
+                      addressForm.get('street')?.hasError('required') &&
+                      addressForm.get('street')?.touched
+                    "
+                    style="color: red; margin-left: 15px; margin-top: -15px"
+                  >
+                    Compulsory fields must be filled
                   </div>
                 </div>
               </div>
@@ -88,6 +116,15 @@
                       placeholder=""
                       formControlName="description"
                     ></textarea>
+                  </div>
+                  <div
+                    *ngIf="
+                      addressForm.get('description')?.hasError('required') &&
+                      addressForm.get('description')?.touched
+                    "
+                    style="color: red; margin-left: 15px; margin-top: -15px"
+                  >
+                    Compulsory fields must be filled
                   </div>
                 </div>
               </div>

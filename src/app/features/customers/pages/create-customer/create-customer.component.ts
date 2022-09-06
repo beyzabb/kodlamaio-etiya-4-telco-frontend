@@ -5,11 +5,12 @@ import {
   FormGroup,
   Validators,
   FormBuilder,
+  ValidatorFn,
+  AbstractControl,
 } from '@angular/forms';
 import { Customer } from '../../models/customer';
 import { CustomersService } from '../../services/customer/customers.service';
 import { Router } from '@angular/router';
-import { CustomerDemographicInfo } from '../../models/customerDemographicInfo';
 
 @Component({
   templateUrl: './create-customer.component.html',
@@ -35,19 +36,48 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   createFormUpdateCustomer() {
-    this.profileForm = this.formBuilder.group({
-      firstName: [this.customer.firstName, Validators.required],
-      middleName: [this.customer.middleName],
-      lastName: [this.customer.lastName, Validators.required],
-      birthDate: [this.customer.birthDate, Validators.required],
-      gender: [this.customer.gender, Validators.required],
-      fatherName: [this.customer.fatherName],
-      motherName: [this.customer.motherName],
-      nationalityId: [this.customer.nationalityId, Validators.required],
-    });
+    this.profileForm = this.formBuilder.group(
+      {
+        firstName: ['', Validators.required],
+        middleName: [''],
+        lastName: ['', Validators.required],
+        birthDate: ['', [Validators.required]],
+        gender: ['', Validators.required],
+        fatherName: [''],
+        motherName: [''],
+        nationalityId: ['', Validators.required],
+      },
+
+      { validator: this.ageCheck('birthDate') }
+    );
   }
   goNextPage() {
     this.customerService.setDemographicInfoToStore(this.profileForm.value);
     this.router.navigateByUrl('/dashboard/customers/list-address-info');
+  }
+  getAge(date: string): number {
+    let today = new Date();
+    let birthDate = new Date(date);
+    let age = today.getFullYear() - birthDate.getFullYear();
+    let month = today.getMonth() - birthDate.getMonth();
+    if (month < 0 || (month === 0 && today.getDate() < birthDate.getDate())) {
+      age--;
+      console.log(age, 'birthdate', birthDate);
+    }
+    return age;
+  }
+  ageCheck(controlName: string): ValidatorFn {
+    return (controls: AbstractControl) => {
+      const control = controls.get(controlName);
+
+      if (control?.errors && !control.errors['under18']) {
+        return null;
+      }
+      if (this.getAge(control?.value) <= 18) {
+        return { under18: true };
+      } else {
+        return null;
+      }
+    };
   }
 }
