@@ -31,6 +31,15 @@
                     etiyaInput="dark"
                     formControlName="firstName"
                   />
+                  <div
+                    *ngIf="
+                      profileForm.get('firstName')?.hasError('required') &&
+                      profileForm.get('firstName')?.touched
+                    "
+                    style="color: red; margin-left: 15px; margin-top: -15px"
+                  >
+                    Compulsory fields must be filled.
+                  </div>
                 </div>
               </div>
             </div>

@@ -14,9 +14,7 @@
         type="number"
         etiyaInput="dark"
         formControlName="nationalityId"
-        pattern="/^-?\d+\.?\d*$/"
         onKeyPress="if(this.value.length==11) return false;"
-        type="number"
         #nationalityId
       />
       <!-- <div
@@ -31,9 +29,10 @@
 
       <label class="e-label">CUSTOMER ID</label>
       <input
-        type="text"
         etiyaInput="dark"
         formControlName="customerId"
+        onKeyPress="if(this.value.length==100) return false;"
+        type="number"
         #customerId
       />
 
@@ -47,7 +46,9 @@
 
       <label class="e-label">GSM NUMBER</label>
       <input
-        type="text"
+        pattern="/^-?\d+\.?\d*$/"
+        onKeyPress="if(this.value.length==10) return false;"
+        type="number"
         etiyaInput="dark"
         formControlName="gsmNumber"
         #gsmNumber
