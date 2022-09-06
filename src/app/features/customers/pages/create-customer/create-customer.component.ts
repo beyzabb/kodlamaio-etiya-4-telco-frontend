@@ -36,25 +36,44 @@ export class CreateCustomerComponent implements OnInit {
   }
 
   createFormUpdateCustomer() {
-    this.profileForm = this.formBuilder.group(
-      {
-        firstName: ['', Validators.required],
-        middleName: [''],
-        lastName: ['', Validators.required],
-        birthDate: ['', [Validators.required]],
-        gender: ['', Validators.required],
-        fatherName: [''],
-        motherName: [''],
-        nationalityId: ['', Validators.required],
-      },
+    this.profileForm = this.formBuilder.group({
+      firstName: [this.customer.firstName, Validators.required],
+      middleName: [this.customer.middleName],
+      lastName: [this.customer.lastName, Validators.required],
+      birthDate: [
+        this.customer.birthDate,
+        [Validators.required],
 
-      { validator: this.ageCheck('birthDate') }
+        { validator: this.ageCheck('birthDate') },
+      ],
+      gender: [this.customer.gender, Validators.required],
+      fatherName: [this.customer.fatherName],
+      motherName: [this.customer.motherName],
+      nationalityId: [
+        this.customer.nationalityId,
+        Validators.required,
+        Validators.minLength(11),
+      ],
+    });
+  }
+
+  nextPage() {
+    if (this.profileForm.valid) {
+      this.customerService.setDemographicInfoToStore(this.profileForm.value);
+      this.router.navigateByUrl('/dashboard/customers/list-address-info');
+    }
+  }
+
+  goNextPage() {}
+
+  IsPropertyInvalid(name: string) {
+    return (
+      this.profileForm.get(name)?.touched &&
+      this.profileForm.get(name)?.hasError('required') &&
+      this.profileForm.get(name)?.dirty
     );
   }
-  goNextPage() {
-    this.customerService.setDemographicInfoToStore(this.profileForm.value);
-    this.router.navigateByUrl('/dashboard/customers/list-address-info');
-  }
+
   getAge(date: string): number {
     let today = new Date();
     let birthDate = new Date(date);

@@ -42,8 +42,10 @@ export class CustomersService {
       next: (response) => {
         let filteredCustomers = response;
         if (searchCustomer.nationalityId) {
-          filteredCustomers = filteredCustomers.filter(
-            (item) => item.nationalityId == searchCustomer.nationalityId
+          filteredCustomers = filteredCustomers.filter((item) =>
+            item.nationalityId
+              ?.toString()
+              .includes(searchCustomer.nationalityId.toString())
           );
         }
         if (searchCustomer.customerId) {

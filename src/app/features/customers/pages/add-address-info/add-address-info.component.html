@@ -46,7 +46,7 @@
                       addressForm.get('city')?.hasError('required') &&
                       addressForm.get('city')?.touched
                     "
-                    style="color: red; margin-left: 15px; margin-top: -15px"
+                    style="color: red; margin-left: 355px"
                   >
                     Compulsory fields must be filled
                   </div>
@@ -67,17 +67,18 @@
                       formControlName="flatNumber"
                     />
                   </div>
+                  <div
+                    *ngIf="
+                      addressForm.get('flatNumber')?.hasError('required') &&
+                      addressForm.get('flatNumber')?.touched
+                    "
+                    style="color: red; margin-left: 500px"
+                  >
+                    Compulsory fields must be filled
+                  </div>
                 </div>
               </div>
-              <div
-                *ngIf="
-                  addressForm.get('flatNumber')?.hasError('required') &&
-                  addressForm.get('flatNumber')?.touched
-                "
-                style="color: red; margin-left: 15px; margin-top: -15px"
-              >
-                Compulsory fields must be filled
-              </div>
+
               <div class="col-12 col-xl-5">
                 <div class="row e-address-input">
                   <div class="col-12 col-lg-4 e-address-col-center">
@@ -97,7 +98,7 @@
                       addressForm.get('street')?.hasError('required') &&
                       addressForm.get('street')?.touched
                     "
-                    style="color: red; margin-left: 15px; margin-top: -15px"
+                    style="color: red; margin-left: 353px; margin-top: 5px"
                   >
                     Compulsory fields must be filled
                   </div>
@@ -122,7 +123,7 @@
                       addressForm.get('description')?.hasError('required') &&
                       addressForm.get('description')?.touched
                     "
-                    style="color: red; margin-left: 15px; margin-top: -15px"
+                    style="color: red; margin-top: 5px"
                   >
                     Compulsory fields must be filled
                   </div>
