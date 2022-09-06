@@ -46,7 +46,7 @@ export class CreateCustomerComponent implements OnInit {
 
         { validator: this.ageCheck('birthDate') },
       ],
-      gender: [this.customer.gender, Validators.required],
+      gender: [this.customer.gender || '', Validators.required],
       fatherName: [this.customer.fatherName],
       motherName: [this.customer.motherName],
       nationalityId: [

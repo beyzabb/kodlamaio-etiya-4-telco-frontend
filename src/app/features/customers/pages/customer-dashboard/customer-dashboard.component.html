@@ -23,7 +23,19 @@
             <div *ngIf="lenght == 0; else tableInfo">
               <app-not-found [btnText]="'CREATE CUSTOMER'"></app-not-found>
             </div>
+
             <ng-template #tableInfo>
+              <label
+                class="all-results"
+                *ngIf="filteredCustomerList; else customerListState"
+                >All results ({{ lenght }})</label
+              >
+              <ng-template #customerListState>
+                <label class="all-results" *ngIf="customerList"
+                  >All results ({{ customerList.length }})</label
+                >
+              </ng-template>
+
               <div class="table-responsive">
                 <app-table-info class="e-table">
                   <thead>
