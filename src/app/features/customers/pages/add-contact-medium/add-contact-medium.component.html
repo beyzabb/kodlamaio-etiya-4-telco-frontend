@@ -53,6 +53,7 @@
                   <input
                     type="text"
                     etiyaInput="dark"
+                    appPhoneMask
                     class="e-contact-input"
                     formControlName="homePhone"
                   />
@@ -69,6 +70,8 @@
                 <div class="col-12 col-lg-8 e-contact-col-center">
                   <input
                     type="text"
+                    appPhoneMask
+                    onKeyPress="if(this.value.length==16) return false;"
                     etiyaInput="dark"
                     class="e-contact-input"
                     formControlName="mobilePhone"
