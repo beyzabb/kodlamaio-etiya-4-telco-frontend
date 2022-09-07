@@ -33,6 +33,8 @@ export class CustomerDashboardComponent implements OnInit {
   }
 
   getCustomerId(customer: Customer) {
-    this.router.navigateByUrl(`/customer-info/${customer.id}`);
+    this.router.navigateByUrl(
+      `/dashboard/customers/customer-info/${customer.id}`
+    );
   }
 }
