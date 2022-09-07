@@ -20,6 +20,7 @@ import { CustomerContactMediumComponent } from './pages/customer-contact-medium/
 import { OfferSelectionComponent } from './pages/offer-selection/offer-selection.component';
 import { AddCustomerAddressComponent } from './pages/add-customer-address/add-customer-address.component';
 import { CityModule } from '../city/city.module';
+import { PhoneMaskDirective } from './directives/phone-mask.directive';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { CityModule } from '../city/city.module';
     CustomerContactMediumComponent,
     OfferSelectionComponent,
     AddCustomerAddressComponent,
+    PhoneMaskDirective,
   ],
   imports: [
     CommonModule,

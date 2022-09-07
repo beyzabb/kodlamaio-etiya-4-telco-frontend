@@ -50,7 +50,7 @@
         max="9999999999"
         min="1"
         (keypress)="isNumber($event)"
-        onKeyPress="if(this.value.length==11) return false;"
+        onKeyPress="if(this.value.length==10) return false;"
         #accountNumber
         [ngClass]="{
           'invalid-input': isShow && searchForm.controls['accountNumber'].errors

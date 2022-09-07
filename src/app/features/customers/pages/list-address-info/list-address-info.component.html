@@ -37,7 +37,21 @@
               </tr>
               <ng-template #customerAddressList>
                 <tr *ngFor="let address of customer.addresses">
-                  <th>{{ address.city.name }}</th>
+                  <th style="display: flex">
+                    <div>
+                      <button
+                        (click)="selectAddressId(address.id)"
+                        etiyaButton="edit"
+                      ></button>
+                      <button
+                        (click)="removePopup(address)"
+                        etiyaButton="remove"
+                      ></button>
+                    </div>
+                    <div style="margin-left: 50px">
+                      {{ address.city.name }}
+                    </div>
+                  </th>
                   <td>{{ address.street }}</td>
                   <td>{{ address.flatNumber }}</td>
                   <td>{{ address.description }}</td>
@@ -65,6 +79,7 @@
         <button
           etiyaButton="clear"
           routerLink="/dashboard/customers/contact-medium"
+          [disabled]="customer.addresses?.length === 0"
         >
           NEXT
         </button>

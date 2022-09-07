@@ -24,6 +24,6 @@ export class ConfirmationDialogComponent implements OnInit {
     this.messageService.clear('c');
   }
   onReject() {
-    this.messageService.clear('c');
+    this.messageService.clear('r');
   }
 }

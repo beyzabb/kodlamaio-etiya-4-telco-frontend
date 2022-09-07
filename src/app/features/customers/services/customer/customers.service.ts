@@ -1,8 +1,10 @@
 import {
-  addAddressInfo,
-  setContactMediumInfo,
+  removeAddressInfo,
+  updateAddressInfo,
   setDemographicInfo,
-} from '../../../../shared/store/customers/customerToAdd/customerToAdd.actions';
+  setContactMediumInfo,
+  addAddressInfo,
+} from './../../../../shared/store/customers/customerToAdd/customerToAdd.actions';
 import { Customer } from './../../models/customer';
 import { map, Observable, Subject } from 'rxjs';
 import { environment } from './../../../../../environments/environment';
@@ -13,7 +15,6 @@ import { Store } from '@ngrx/store';
 import { CustomerDemographicInfo } from '../../models/customerDemographicInfo';
 import { Address } from '../../models/address';
 import { ContactMedium } from '../../models/contactMedium';
-import { CustomerBillingAccountComponent } from '../../pages/customer-billing-account/customer-billing-account/customer-billing-account.component';
 import { BillingAccount } from '../../models/billingAccount';
 import { SharedStoreState } from 'src/app/shared/store/shared.reducers';
 
@@ -64,7 +65,7 @@ export class CustomersService {
         if (searchCustomer.gsmNumber) {
           filteredCustomers = filteredCustomers.filter((item) =>
             item
-              .contactMedium!.mobilePhone.substr(0, 11)
+              .contactMedium!.mobilePhone.substr(1, 14)
               .split(' ')
               .join('')
               .includes(searchCustomer.gsmNumber)
@@ -109,8 +110,23 @@ export class CustomersService {
     this.store.dispatch(setDemographicInfo(props));
   }
 
-  addAddressInfoToStore(props: Address) {
-    this.store.dispatch(addAddressInfo(props));
+  updateAddressInfoToStore(props: Address) {
+    const newAddress: Address = {
+      ...props,
+    };
+    this.store.dispatch(updateAddressInfo(newAddress));
+  }
+
+  addAddressInfoToStore(props: Address, customers: Customer) {
+    const newAddress: Address = {
+      ...props,
+      id: (customers.addresses?.length || 0) + 1,
+    };
+    this.store.dispatch(addAddressInfo(newAddress));
+  }
+
+  removeAdress(address: Address) {
+    this.store.dispatch(removeAddressInfo(address));
   }
 
   setContactMediumInfoToStore(props: ContactMedium) {

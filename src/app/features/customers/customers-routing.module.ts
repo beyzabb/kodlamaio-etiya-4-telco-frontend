@@ -29,6 +29,7 @@ const routes: Routes = [
   { path: 'update-customer/:id', component: UpdateCustomerComponent },
   { path: 'customer-address/:id', component: CustomerAddressComponent },
   { path: 'customer-bill/:id', component: CustomerBillingAccountComponent },
+  { path: 'update-address-info/:id', component: AddAddressInfoComponent },
   {
     path: 'customer-contact-form/:id',
     component: UpdateCustContactMediumComponent,
