@@ -38,7 +38,6 @@
                 </div>
                 <small
                   *ngIf="isShow && profileForm.controls['firstName'].errors"
-                  id="lastName-help"
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-left: 380px; margin-top: -20px"
                 >
@@ -78,7 +77,6 @@
                     type="text"
                     etiyaInput="dark"
                     formControlName="lastName"
-                    aria-describedby="lastName-help"
                     [ngClass]="{
                       'invalid-input':
                         isShow && profileForm.controls['lastName'].errors
@@ -87,7 +85,6 @@
                 </div>
                 <small
                   *ngIf="isShow && profileForm.controls['lastName'].errors"
-                  id="lastName-help"
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-left: 380px; margin-top: -20px"
                 >
@@ -152,7 +149,6 @@
                 </div>
                 <small
                   *ngIf="isShow && profileForm.controls['gender'].errors"
-                  id="lastName-help"
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-left: 380px"
                 >
@@ -219,7 +215,6 @@
                 </div>
                 <small
                   *ngIf="isShow && profileForm.controls['nationalityId'].errors"
-                  id="lastName-help"
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-left: 380px; margin-top: -20px"
                 >

@@ -56,7 +56,10 @@
           'invalid-input': isShow && searchForm.controls['accountNumber'].errors
         }"
       />
-      <small *ngIf="isShow && searchForm.controls['accountNumber'].errors">
+      <small
+        *ngIf="isShow && searchForm.controls['accountNumber'].errors"
+        class="p-error block ng-invalid ng-dirty"
+      >
         You entered a missing number.
       </small>
 
