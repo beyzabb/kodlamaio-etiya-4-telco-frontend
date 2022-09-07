@@ -15,6 +15,9 @@
         etiyaInput="dark"
         formControlName="nationalityId"
         onKeyPress="if(this.value.length==11) return false;"
+        onkeydown="return event.keyCode !== 69 && event.keyCode !==110 && event.keyCode !==109 && event.keyCode !==190 && event.keyCode !==107 && event.keyCode !==188"
+        max="99999999999"
+        min="1"
         #nationalityId
       />
       <!-- <div
@@ -31,8 +34,11 @@
       <input
         etiyaInput="dark"
         formControlName="customerId"
-        onKeyPress="if(this.value.length==100) return false;"
+        onkeydown="return event.keyCode !== 69 && event.keyCode !==110 && event.keyCode !==109 && event.keyCode !==190 && event.keyCode !==107 && event.keyCode !==188"
+        onKeyPress="if(this.value.length==11) return false;"
+        max="9999999999"
         type="number"
+        min="1"
         #customerId
       />
 
@@ -41,7 +47,10 @@
         type="number"
         etiyaInput="dark"
         formControlName="accountNumber"
-        onKeyPress="if(this.value.length==10) return false;"
+        max="9999999999"
+        min="1"
+        onkeydown="return event.keyCode !== 69 && event.keyCode !==110 && event.keyCode !==109 && event.keyCode !==190 && event.keyCode !==107 && event.keyCode !==188"
+        onKeyPress="if(this.value.length==11) return false;"
         #accountNumber
       />
       <div
@@ -55,10 +64,14 @@
 
       <label class="e-label">GSM NUMBER</label>
       <input
+        onkeydown="return event.keyCode !== 69 && event.keyCode !==110 && event.keyCode !==109 && event.keyCode !==190 && event.keyCode !==107 && event.keyCode !==188"
         onKeyPress="if(this.value.length==11) return false;"
         type="number"
         etiyaInput="dark"
         formControlName="gsmNumber"
+        placeholder="+90"
+        max="99999999999"
+        min="1"
         #gsmNumber
       />
       <div
@@ -86,7 +99,11 @@
 
       <label class="e-label">ORDER NUMBER</label>
       <input
-        type="text"
+        onkeydown="return event.keyCode !== 69 && event.keyCode !==110 && event.keyCode !==109 && event.keyCode !==190 && event.keyCode !==107 && event.keyCode !==188"
+        onKeyPress="if(this.value.length==11) return false;"
+        max="9999999999"
+        type="number"
+        min="1"
         etiyaInput="dark"
         formControlName="orderNumber"
         #orderNumber
