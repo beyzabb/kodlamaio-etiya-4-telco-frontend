@@ -15,7 +15,7 @@
         etiyaInput="dark"
         formControlName="nationalityId"
         onKeyPress="if(this.value.length==11) return false;"
-        onkeydown="return event.keyCode !== 69 && event.keyCode !==110 && event.keyCode !==109 && event.keyCode !==190 && event.keyCode !==107 && event.keyCode !==188"
+        (keypress)="isNumber($event)"
         max="99999999999"
         min="1"
         #nationalityId
@@ -34,7 +34,7 @@
       <input
         etiyaInput="dark"
         formControlName="customerId"
-        onkeydown="return event.keyCode !== 69 && event.keyCode !==110 && event.keyCode !==109 && event.keyCode !==190 && event.keyCode !==107 && event.keyCode !==188"
+        (keypress)="isNumber($event)"
         onKeyPress="if(this.value.length==11) return false;"
         max="9999999999"
         type="number"
@@ -49,22 +49,20 @@
         formControlName="accountNumber"
         max="9999999999"
         min="1"
-        onkeydown="return event.keyCode !== 69 && event.keyCode !==110 && event.keyCode !==109 && event.keyCode !==190 && event.keyCode !==107 && event.keyCode !==188"
+        (keypress)="isNumber($event)"
         onKeyPress="if(this.value.length==11) return false;"
         #accountNumber
+        [ngClass]="{
+          'invalid-input': isShow && searchForm.controls['accountNumber'].errors
+        }"
       />
-      <div
-        *ngIf="
-          accountNumber.value.length > 0 && accountNumber.value.length < 10
-        "
-        style="color: red; margin-left: 15px; margin-top: -15px"
-      >
+      <small *ngIf="isShow && searchForm.controls['accountNumber'].errors">
         You entered a missing number.
-      </div>
+      </small>
 
       <label class="e-label">GSM NUMBER</label>
       <input
-        onkeydown="return event.keyCode !== 69 && event.keyCode !==110 && event.keyCode !==109 && event.keyCode !==190 && event.keyCode !==107 && event.keyCode !==188"
+        (keypress)="isNumber($event)"
         onKeyPress="if(this.value.length==11) return false;"
         type="number"
         etiyaInput="dark"
@@ -73,13 +71,13 @@
         max="99999999999"
         min="1"
         #gsmNumber
+        [ngClass]="{
+          'invalid-input': isShow && searchForm.controls['gsmNumber'].errors
+        }"
       />
-      <div
-        *ngIf="gsmNumber.value.length > 0 && gsmNumber.value.length < 11"
-        style="color: red; margin-left: 15px; margin-top: -15px"
-      >
+      <small *ngIf="isShow && searchForm.controls['gsmNumber'].errors">
         You entered a missing number.
-      </div>
+      </small>
 
       <label class="e-label">FIRST NAME</label>
       <input
@@ -99,7 +97,7 @@
 
       <label class="e-label">ORDER NUMBER</label>
       <input
-        onkeydown="return event.keyCode !== 69 && event.keyCode !==110 && event.keyCode !==109 && event.keyCode !==190 && event.keyCode !==107 && event.keyCode !==188"
+        (keypress)="isNumber($event)"
         onKeyPress="if(this.value.length==11) return false;"
         max="9999999999"
         type="number"
@@ -117,10 +115,9 @@
       etiyaButton="search"
       (click)="search()"
       [disabled]="
+        searchForm.valid &&
         nationalityId.value.length === 0 &&
         customerId.value.length === 0 &&
-        accountNumber.value.length === 0 &&
-        gsmNumber.value.length === 0 &&
         firstName.value.length === 0 &&
         lastName.value.length === 0 &&
         orderNumber.value.length === 0

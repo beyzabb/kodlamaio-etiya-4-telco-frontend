@@ -15,6 +15,7 @@ import { CustomersService } from 'src/app/features/customers/services/customer/c
 export class SideFilterComponent implements OnInit {
   @Input() filterTitle!: string;
   searchForm!: FormGroup;
+  isShow: Boolean = false;
   @Output() filteredData: any = new EventEmitter();
   constructor(
     private formBuilder: FormBuilder,
@@ -29,25 +30,46 @@ export class SideFilterComponent implements OnInit {
     this.searchForm = this.formBuilder.group({
       nationalityId: [''],
       customerId: [''],
-      accountNumber: [''],
-      gsmNumber: [''],
+      accountNumber: [
+        '',
+        [Validators.pattern('[0-9]{}'), Validators.minLength(10)],
+      ],
+      gsmNumber: [
+        '',
+        [Validators.pattern('[0-9]{}'), Validators.minLength(11)],
+      ],
       firstName: [''],
-      lastname: [''],
+      lastName: [''],
       orderNumber: [''],
     });
   }
 
   search() {
-    let nationalityId = parseInt(this.searchForm.value.nationalityId);
-    const newSearchForm = {
-      ...this.searchForm.value,
-      nationalityId: nationalityId,
-    };
-    this.customersService.getListByFilter(newSearchForm).subscribe((data) => {
-      this.filteredData.emit(data);
-    });
+    if (this.searchForm.valid) {
+      this.isShow = false;
+      let nationalityId = parseInt(this.searchForm.value.nationalityId);
+      const newSearchForm = {
+        ...this.searchForm.value,
+        nationalityId: nationalityId,
+      };
+      this.customersService.getListByFilter(newSearchForm).subscribe((data) => {
+        this.filteredData.emit(data);
+      });
+    } else {
+      this.isShow = true;
+    }
   }
+
   clear() {
     this.createSearchForm();
+  }
+  isNumber(event: any): boolean {
+    console.log(event);
+    const pattern = /[0-9]/;
+    const char = String.fromCharCode(event.which ? event.which : event.keyCode);
+    if (pattern.test(char)) return true;
+
+    event.preventDefault();
+    return false;
   }
 }

@@ -115,3 +115,15 @@
 .e-title-container {
   position: relative;
 }
+
+.invalid-input {
+  border-color: red !important;
+  color: red !important;
+}
+
+small {
+  font-weight: 200 !important;
+  font-size: 15px !important;
+  color: red;
+  margin-left: 15px;
+}
