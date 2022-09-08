@@ -35,8 +35,23 @@
                     type="text"
                     etiyaInput="dark"
                     formControlName="email"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow &&
+                        updateCustomerContactForm.controls['email'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="
+                    isShow && updateCustomerContactForm.controls['email'].errors
+                  "
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red"
+                >
+                  Please enter a valid e-mail adress etiya@example.com for
+                  example.
+                </small>
               </div>
               <div class="col-6 form-group">
                 <div class="form-group">
@@ -45,6 +60,7 @@
                     class="col-7"
                     type="text "
                     etiyaInput="dark"
+                    appPhoneMask
                     formControlName="homePhone"
                   />
                 </div>
@@ -57,9 +73,24 @@
                     class="col-7"
                     type="text "
                     etiyaInput="dark"
+                    appPhoneMask
                     formControlName="mobilePhone"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow &&
+                        updateCustomerContactForm.controls['mobilePhone'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="
+                    isShow && updateCustomerContactForm.controls['email'].errors
+                  "
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
               <div class="col-6">
                 <div class="form-group">
@@ -77,13 +108,7 @@
           <div class="d-flex justify-content-center mt-5">
             <div style="width: 1125px" class="row p-0 pt-4">
               <div class="col-6 d-flex justify-content-lg-start">
-                <button
-                  etiyaButton="clear"
-                  [routerLink]="
-                    '/dashboard/customers/customer-contact-medium/' +
-                    selectedCustomerId
-                  "
-                >
+                <button etiyaButton="clear" (click)="cancelChanges()">
                   CANCEL
                 </button>
               </div>

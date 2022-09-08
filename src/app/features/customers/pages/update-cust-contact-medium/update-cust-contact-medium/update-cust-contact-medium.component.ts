@@ -18,6 +18,7 @@ export class UpdateCustContactMediumComponent implements OnInit {
   updateCustomerContactForm!: FormGroup;
   selectedCustomerId!: number;
   customer!: Customer;
+  isShow: Boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -29,11 +30,25 @@ export class UpdateCustContactMediumComponent implements OnInit {
 
   ngOnInit(): void {
     this.getCustomerById();
+    this.messageService.clearObserver.subscribe((data) => {
+      if (data == 'r') {
+        this.messageService.clear();
+      } else if (data == 'c') {
+        this.messageService.clear();
+        this.router.navigateByUrl(
+          '/dashboard/customers/customer-contact-medium/' +
+            this.selectedCustomerId
+        );
+      }
+    });
   }
 
   createFormUpdateContactCustomer() {
     this.updateCustomerContactForm = this.formBuilder.group({
-      email: [this.customer.contactMedium?.email, Validators.required],
+      email: [
+        this.customer.contactMedium?.email,
+        [Validators.email, Validators.required],
+      ],
       homePhone: [this.customer.contactMedium?.homePhone, Validators.required],
       mobilePhone: [
         this.customer.contactMedium?.mobilePhone,
@@ -65,14 +80,10 @@ export class UpdateCustContactMediumComponent implements OnInit {
   }
   update() {
     if (this.updateCustomerContactForm.invalid) {
-      this.messageService.add({
-        detail: 'Please fill required areas!',
-        severity: 'danger',
-        summary: 'error',
-        key: 'etiya-custom',
-      });
+      this.isShow = true;
       return;
     }
+    this.isShow = false;
     this.customersService
       .updateContactMedium(this.updateCustomerContactForm.value, this.customer)
       .subscribe(() => {
@@ -86,5 +97,13 @@ export class UpdateCustContactMediumComponent implements OnInit {
           key: 'etiya-custom',
         });
       });
+  }
+  cancelChanges() {
+    this.messageService.add({
+      key: 'c',
+      sticky: true,
+      severity: 'warn',
+      detail: 'Your changes could not be saved. Are you sure?',
+    });
   }
 }
