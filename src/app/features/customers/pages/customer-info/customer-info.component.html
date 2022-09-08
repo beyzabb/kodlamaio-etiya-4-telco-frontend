@@ -73,7 +73,10 @@
             <label class="e-frame-label">{{ customer.nationalityId }}</label>
           </div>
         </div>
-        <button etiyaButton="remove"></button>
+        <button
+          etiyaButton="remove"
+          (click)="removeCustomerPopup(customer)"
+        ></button>
         <button
           etiyaButton="edit"
           (click)="getCustomerId(customer)"

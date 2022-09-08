@@ -79,11 +79,11 @@ export class CustomersService {
               .includes(searchCustomer.firstName.toLowerCase())
           );
         }
-        if (searchCustomer.lastname) {
+        if (searchCustomer.lastName) {
           filteredCustomers = filteredCustomers.filter((item) =>
             item
               .lastName!.toLowerCase()
-              .includes(searchCustomer.lastname.toLowerCase())
+              .includes(searchCustomer.lastName.toLowerCase())
           );
         }
         if (searchCustomer.orderNumber) {
@@ -120,13 +120,31 @@ export class CustomersService {
   addAddressInfoToStore(props: Address, customers: Customer) {
     const newAddress: Address = {
       ...props,
-      id: (customers.addresses?.length || 0) + 1,
+      id: Math.floor(Math.random() * 10000),
     };
     this.store.dispatch(addAddressInfo(newAddress));
   }
 
   removeAdress(address: Address) {
     this.store.dispatch(removeAddressInfo(address));
+  }
+
+  removeAddress(
+    addressToDelete: Address,
+    customer: Customer
+  ): Observable<Customer> {
+    const newCustomer: Customer = {
+      ...customer,
+    };
+    const newAddress = customer.addresses?.filter(
+      (address) => address.id != addressToDelete.id
+    );
+    newCustomer.addresses = newAddress;
+
+    return this.httpClient.put<Customer>(
+      `${this.apiControllerUrl}/${customer.id}`,
+      newCustomer
+    );
   }
 
   setContactMediumInfoToStore(props: ContactMedium) {
@@ -195,7 +213,7 @@ export class CustomersService {
       ...customer,
       addresses: [
         ...(customer.addresses || []),
-        { ...address, id: (customer.addresses?.length || 0) + 1 },
+        { ...address, id: Math.floor(Math.random() * 10000) },
       ],
     };
     return this.httpClient.put<Customer>(
@@ -244,7 +262,7 @@ export class CustomersService {
       ...customer,
       billingAccounts: [
         ...(customer.billingAccounts || []),
-        { ...billingAccount, id: (customer.billingAccounts?.length || 0) + 1 },
+        { ...billingAccount, id: Math.floor(Math.random() * 10000) },
       ],
     };
     console.log(newCustomer);

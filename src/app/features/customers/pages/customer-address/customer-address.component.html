@@ -48,6 +48,10 @@
                     (click)="selectAddressId(adr.id)"
                     etiyaButton="edit"
                   ></button>
+                  <button
+                    (click)="removePopup(adr)"
+                    etiyaButton="remove"
+                  ></button>
                 </div>
                 <div style="margin-left: 65px">
                   {{ adr.city.name }}
