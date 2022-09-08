@@ -11,6 +11,7 @@ import {
 import { Customer } from '../../models/customer';
 import { CustomersService } from '../../services/customer/customers.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 
 @Component({
   templateUrl: './create-customer.component.html',
@@ -21,10 +22,12 @@ export class CreateCustomerComponent implements OnInit {
   createCustomerModel$!: Observable<Customer>;
   customer!: Customer;
   isShow: Boolean = false;
+  nationalityId: Boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private customerService: CustomersService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) {
     this.createCustomerModel$ = this.customerService.customerToAddModel$;
   }
@@ -33,6 +36,14 @@ export class CreateCustomerComponent implements OnInit {
     this.createCustomerModel$.subscribe((state) => {
       this.customer = state;
       this.createFormUpdateCustomer();
+    });
+    this.messageService.clearObserver.subscribe((data) => {
+      if (data == 'r') {
+        this.messageService.clear();
+      } else if (data == 'c') {
+        this.messageService.clear();
+        this.router.navigateByUrl('/dashboard/customers/customer-dashboard');
+      }
     });
   }
 
@@ -57,14 +68,37 @@ export class CreateCustomerComponent implements OnInit {
     });
   }
 
+  getCustomers(id: number) {
+    this.customerService.getList().subscribe((response) => {
+      let matchCustomer = response.find((item) => {
+        return item.nationalityId == id;
+      });
+      if (matchCustomer) {
+        this.nationalityId = true;
+      } else {
+        this.nationalityId = false;
+        this.customerService.setDemographicInfoToStore(this.profileForm.value);
+        this.router.navigateByUrl('/dashboard/customers/list-address-info');
+      }
+    });
+  }
+
   goNextPage() {
     if (this.profileForm.valid) {
       this.isShow = false;
-      this.customerService.setDemographicInfoToStore(this.profileForm.value);
-      this.router.navigateByUrl('/dashboard/customers/list-address-info');
+      this.getCustomers(this.profileForm.value.nationalityId);
     } else {
       this.isShow = true;
     }
+  }
+
+  cancelChanges() {
+    this.messageService.add({
+      key: 'c',
+      sticky: true,
+      severity: 'warn',
+      detail: 'Your changes could not be saved. Are you sure?',
+    });
   }
 
   // getAge(date: string): number {

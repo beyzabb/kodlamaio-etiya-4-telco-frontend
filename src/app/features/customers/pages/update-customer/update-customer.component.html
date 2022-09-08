@@ -37,8 +37,22 @@
                     type="text"
                     etiyaInput="dark"
                     formControlName="firstName"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow &&
+                        updateCustomerForm.controls['firstName'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="
+                    isShow && updateCustomerForm.controls['firstName'].errors
+                  "
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 220px; margin-top: -20px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
               <div class="col-6 form-group">
                 <div class="form-group">
@@ -60,19 +74,65 @@
                     type="text "
                     etiyaInput="dark"
                     formControlName="lastName"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow && updateCustomerForm.controls['lastName'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="
+                    isShow && updateCustomerForm.controls['lastName'].errors
+                  "
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 220px; margin-top: -20px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label class="col-5" for="birthDate">Birth Name:</label>
                   <input
                     class="col-7"
-                    type="text"
+                    type="date"
                     etiyaInput="dark"
                     formControlName="birthDate"
+                    [max]="today | date: 'yyyy-MM-dd'"
+                    (blur)="onDateChange($event)"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow &&
+                        updateCustomerForm.controls['birthDate'].errors
+                    }"
                   />
                 </div>
+                <!-- <small
+                  *ngIf="
+                    isShow &&
+                    updateCustomerForm.controls['birthDate'].errors &&
+                    !futureDate &&
+                    !under18
+                  "
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 220px; margin-top: -20px"
+                >
+                  compulsory fields must be filled.
+                </small> -->
+                <small
+                  *ngIf="futureDate"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 220px; margin-top: -20px"
+                >
+                  Please enter a valid date of birth
+                </small>
+                <small
+                  *ngIf="under18"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 220px; margin-top: -20px"
+                >
+                  The customer cannot be under the age of 18.
+                </small>
               </div>
               <div class="col-6">
                 <div
@@ -85,12 +145,23 @@
                       id="gender"
                       class="p-2"
                       formControlName="gender"
+                      [ngClass]="{
+                        'invalid-input':
+                          isShow && updateCustomerForm.controls['gender'].errors
+                      }"
                     >
-                      <option selected value="Female">Female</option>
-                      <option value="Erkek">Erkek</option>
+                      <option value="Female">Female</option>
+                      <option value="Male">Male</option>
                     </select>
                   </div>
                 </div>
+                <small
+                  *ngIf="isShow && updateCustomerForm.controls['gender'].errors"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 220px; margin-top: -20px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
 
               <div class="col-6">
@@ -123,22 +194,47 @@
                     type="text"
                     etiyaInput="dark"
                     formControlName="nationalityId"
+                    onKeyPress="if(this.value.length==11) return false;"
+                    (keypress)="isNumber($event)"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow &&
+                        updateCustomerForm.controls['nationalityId'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="
+                    isShow &&
+                    updateCustomerForm.controls['nationalityId'].errors
+                  "
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 218px; margin-top: -20px"
+                >
+                  compulsory fields must be filled.
+                </small>
+                <small
+                  *ngIf="nationalityId"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 218px; margin-top: -20px"
+                >
+                  A customer with this nationality ID already exists.
+                </small>
               </div>
             </div>
           </div>
           <div class="d-flex justify-content-center">
             <div style="width: 1125px" class="row p-0 pt-4">
-              <div class="col-6 d-flex justify-content-lg-start">
+              <div class="col-6 d-flex justify-content-lg-start pt-5">
                 <button
                   etiyaButton="clear"
                   routerLink="/dashboard/customers/customer-info"
+                  (click)="cancelChanges()"
                 >
                   CANCEL
                 </button>
               </div>
-              <div class="col-6 d-flex justify-content-lg-end">
+              <div class="col-6 d-flex justify-content-lg-end pt-5">
                 <button etiyaButton="clear" (click)="update()">SAVE</button>
               </div>
             </div>

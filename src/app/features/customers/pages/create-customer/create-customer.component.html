@@ -209,7 +209,9 @@
                     onKeyPress="if(this.value.length==11) return false;"
                     [ngClass]="{
                       'invalid-input':
-                        isShow && profileForm.controls['nationalityId'].errors
+                        (isShow &&
+                          profileForm.controls['nationalityId'].errors) ||
+                        nationalityId
                     }"
                   />
                 </div>
@@ -220,15 +222,19 @@
                 >
                   compulsory fields must be filled.
                 </small>
+                <small
+                  *ngIf="nationalityId"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 380px; margin-top: -20px"
+                >
+                  A customer with this nationality ID already exists.
+                </small>
               </div>
             </div>
             <div class="d-flex justify-content-center">
               <div class="row mt-5 w-75">
                 <div class="col-12 col-lg-6 d-flex justify-content-lg-start">
-                  <button
-                    etiyaButton="clear"
-                    routerLink="/dashboard/customers/customer-dashboard"
-                  >
+                  <button etiyaButton="clear" (click)="cancelChanges()">
                     CANCEL
                   </button>
                 </div>
