@@ -10,14 +10,14 @@
       "gender": "Female",
       "nationalityId": 48776304564,
       "role": "cooperative",
-      "motherName": "Hanna",
+      "motherName": "Hannah",
       "fatherName": "Chris",
       "addresses": [
         {
           "id": 1,
           "city": {
             "id": 1,
-            "name": "New York"
+            "name": "Adana"
           },
           "street": "Granby",
           "flatNumber": 6,
@@ -27,7 +27,7 @@
           "id": 2,
           "city": {
             "id": 1,
-            "name": "New York"
+            "name": "Adana"
           },
           "street": "Oak Valley",
           "flatNumber": 18,
@@ -51,7 +51,7 @@
             {
               "city": {
                 "id": 3,
-                "name": "Chicago"
+                "name": "Afyonkarahisar"
               },
               "street": "Sachtjen",
               "flatNumber": 13,
@@ -100,12 +100,12 @@
           "accountNumber": "7536678460",
           "accountName": "ipsum",
           "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",
-          "status": "canceled",
+          "status": "passive",
           "addresses": [
             {
               "city": {
                 "id": 10,
-                "name": "Oklahoma City"
+                "name": "Artvin"
               },
               "street": "Sommers",
               "flatNumber": 15,
@@ -124,7 +124,7 @@
             {
               "city": {
                 "id": 10,
-                "name": "Oklahoma City"
+                "name": "Artvin"
               },
               "street": "Springs",
               "flatNumber": 7,
@@ -205,17 +205,17 @@
       "middleName": "Far",
       "lastName": "Bonnet",
       "birthDate": "5/23/1962",
-      "gender": "Male",
+      "gender": "Erkek",
       "nationalityId": 68951141024,
       "role": "individual",
       "motherName": "Zarla",
-      "fatherName": "Leo",
+      "fatherName": "Leon",
       "addresses": [
         {
           "id": 1,
           "city": {
             "id": 9,
-            "name": "Seattle"
+            "name": "Ardahan"
           },
           "street": "Ilene",
           "flatNumber": 8,
@@ -224,7 +224,7 @@
       ],
       "contactMedium": {
         "email": "lbonnet1@php.net",
-        "homePhone": "435 794 2157",
+        "homePhone": "435 794 2158",
         "mobilePhone": "+56 807 800 0837",
         "fax": "161-335-2467"
       },
@@ -239,7 +239,7 @@
             {
               "city": {
                 "id": 9,
-                "name": "Seattle"
+                "name": "Ardahan"
               },
               "street": "Moulton",
               "flatNumber": 5,
@@ -346,12 +346,12 @@
           "accountNumber": "7003545349",
           "accountName": "nibh",
           "description": "Donec semper sapien a libero.",
-          "status": "canceled",
+          "status": "passive",
           "addresses": [
             {
               "city": {
                 "id": 9,
-                "name": "Seattle"
+                "name": "Ardahan"
               },
               "street": "Westend",
               "flatNumber": 14,
@@ -432,38 +432,6 @@
       ]
     },
     {
-      "id": 3,
-      "customerId": 3,
-      "firstName": "Codee",
-      "middleName": "Lena",
-      "lastName": "Gartan",
-      "birthDate": "9/29/1997",
-      "gender": "Female",
-      "nationalityId": 67712315360,
-      "role": "individual",
-      "motherName": "Halie",
-      "fatherName": "Martin",
-      "addresses": [
-        {
-          "id": 1,
-          "city": {
-            "id": 9,
-            "name": "Seattle"
-          },
-          "street": "Waxwing",
-          "flatNumber": 16,
-          "description": "4 Golden Leaf Place"
-        }
-      ],
-      "contactMedium": {
-        "email": "mgartan2@blogger.com",
-        "homePhone": "928 361 8566",
-        "mobilePhone": "+54 409 421 3507",
-        "fax": "266-952-9086"
-      },
-      "billingAccounts": []
-    },
-    {
       "id": 4,
       "customerId": 4,
       "firstName": "Brew",
@@ -480,7 +448,7 @@
           "id": 1,
           "city": {
             "id": 5,
-            "name": "Phoenix"
+            "name": "Aksaray"
           },
           "street": "Vera",
           "flatNumber": 5,
@@ -490,11 +458,21 @@
           "id": 2,
           "city": {
             "id": 5,
-            "name": "Phoenix"
+            "name": "Aksaray"
           },
           "street": "Mcguire",
           "flatNumber": 18,
           "description": "03957 Sloan Trail"
+        },
+        {
+          "city": {
+            "id": 2,
+            "name": "Adıyaman"
+          },
+          "street": "gdfgdf",
+          "flatNumber": 5444,
+          "description": "ytrdytryt",
+          "id": 3
         }
       ],
       "contactMedium": {
@@ -514,7 +492,7 @@
             {
               "city": {
                 "id": 5,
-                "name": "Phoenix"
+                "name": "Aksaray"
               },
               "street": "Lakeland",
               "flatNumber": 3,
@@ -577,7 +555,7 @@
           "id": 1,
           "city": {
             "id": 3,
-            "name": "Chicago"
+            "name": "Afyonkarahisar"
           },
           "street": "Killdeer",
           "flatNumber": 3,
@@ -587,7 +565,7 @@
           "id": 2,
           "city": {
             "id": 3,
-            "name": "Chicago"
+            "name": "Afyonkarahisar"
           },
           "street": "Melrose",
           "flatNumber": 9,
@@ -611,7 +589,7 @@
             {
               "city": {
                 "id": 5,
-                "name": "Phoenix"
+                "name": "Aksaray"
               },
               "street": "Declaration",
               "flatNumber": 7,
@@ -660,12 +638,12 @@
           "accountNumber": "0514011459",
           "accountName": "non",
           "description": "Cras pellentesque volutpat dui.",
-          "status": "canceled",
+          "status": "passive",
           "addresses": [
             {
               "city": {
                 "id": 3,
-                "name": "Chicago"
+                "name": "Afyonkarahisar"
               },
               "street": "Russell",
               "flatNumber": 3,
@@ -684,7 +662,7 @@
             {
               "city": {
                 "id": 3,
-                "name": "Chicago"
+                "name": "Afyonkarahisar"
               },
               "street": "Judy",
               "flatNumber": 19,
@@ -741,7 +719,7 @@
           "id": 1,
           "city": {
             "id": 4,
-            "name": "Houston"
+            "name": "Ağrı"
           },
           "street": "Fieldstone",
           "flatNumber": 11,
@@ -765,7 +743,7 @@
             {
               "city": {
                 "id": 4,
-                "name": "Houston"
+                "name": "Ağrı"
               },
               "street": "East",
               "flatNumber": 9,
@@ -823,7 +801,7 @@
           "id": 1,
           "city": {
             "id": 4,
-            "name": "Houston"
+            "name": "Ağrı"
           },
           "street": "Schurz",
           "flatNumber": 11,
@@ -833,7 +811,7 @@
           "id": 2,
           "city": {
             "id": 2,
-            "name": "Los Angeles"
+            "name": "Adıyaman"
           },
           "street": "Northview",
           "flatNumber": 6,
@@ -857,7 +835,7 @@
             {
               "city": {
                 "id": 2,
-                "name": "Los Angeles"
+                "name": "Adıyaman"
               },
               "street": "Boyd",
               "flatNumber": 4,
@@ -906,7 +884,7 @@
             {
               "city": {
                 "id": 2,
-                "name": "Los Angeles"
+                "name": "Adıyaman"
               },
               "street": "Towne",
               "flatNumber": 16,
@@ -964,7 +942,7 @@
           "id": 1,
           "city": {
             "id": 2,
-            "name": "Los Angeles"
+            "name": "Adıyaman"
           },
           "street": "School",
           "flatNumber": 18,
@@ -983,12 +961,12 @@
           "accountNumber": "1272113434",
           "accountName": "duis",
           "description": "Nulla ut erat id mauris vulputate elementum.",
-          "status": "canceled",
+          "status": "passive",
           "addresses": [
             {
               "city": {
                 "id": 2,
-                "name": "Los Angeles"
+                "name": "Adıyaman"
               },
               "street": "Graceland",
               "flatNumber": 8,
@@ -1007,7 +985,7 @@
             {
               "city": {
                 "id": 2,
-                "name": "Los Angeles"
+                "name": "Adıyaman"
               },
               "street": "Schiller",
               "flatNumber": 15,
@@ -1056,7 +1034,7 @@
             {
               "city": {
                 "id": 2,
-                "name": "Los Angeles"
+                "name": "Adıyaman"
               },
               "street": "Heath",
               "flatNumber": 20,
@@ -1114,7 +1092,7 @@
           "id": 1,
           "city": {
             "id": 2,
-            "name": "Los Angeles"
+            "name": "Adıyaman"
           },
           "street": "Mariners Cove",
           "flatNumber": 12,
@@ -1138,7 +1116,7 @@
             {
               "city": {
                 "id": 1,
-                "name": "New York"
+                "name": "Adana"
               },
               "street": "South",
               "flatNumber": 11,
@@ -1187,7 +1165,7 @@
             {
               "city": {
                 "id": 1,
-                "name": "New York"
+                "name": "Adana"
               },
               "street": "Continental",
               "flatNumber": 16,
@@ -1236,7 +1214,7 @@
             {
               "city": {
                 "id": 1,
-                "name": "New York"
+                "name": "Adana"
               },
               "street": "Sunfield",
               "flatNumber": 3,
@@ -1294,7 +1272,7 @@
           "id": 1,
           "city": {
             "id": 1,
-            "name": "New York"
+            "name": "Adana"
           },
           "street": "Mesta",
           "flatNumber": 17,
@@ -1304,7 +1282,7 @@
           "id": 2,
           "city": {
             "id": 1,
-            "name": "New York"
+            "name": "Adana"
           },
           "street": "Bartelt",
           "flatNumber": 15,
@@ -1328,7 +1306,7 @@
             {
               "city": {
                 "id": 1,
-                "name": "New York"
+                "name": "Adana"
               },
               "street": "Forest",
               "flatNumber": 13,
@@ -1377,7 +1355,7 @@
             {
               "city": {
                 "id": 1,
-                "name": "New York"
+                "name": "Adana"
               },
               "street": "Grasskamp",
               "flatNumber": 11,
@@ -1426,7 +1404,7 @@
             {
               "city": {
                 "id": 10,
-                "name": "Oklahoma City"
+                "name": "Artvin"
               },
               "street": "Colorado",
               "flatNumber": 18,
@@ -1484,7 +1462,7 @@
           "id": 1,
           "city": {
             "id": 3,
-            "name": "Chicago"
+            "name": "Afyonkarahisar"
           },
           "street": "Melvin",
           "flatNumber": 14,
@@ -1508,7 +1486,7 @@
             {
               "city": {
                 "id": 10,
-                "name": "Oklahoma City"
+                "name": "Artvin"
               },
               "street": "Center",
               "flatNumber": 9,
@@ -1536,7 +1514,7 @@
           "id": 1,
           "city": {
             "id": 10,
-            "name": "Oklahoma City"
+            "name": "Artvin"
           },
           "street": "Oriole",
           "flatNumber": 1,
@@ -1546,7 +1524,7 @@
           "id": 2,
           "city": {
             "id": 10,
-            "name": "Oklahoma City"
+            "name": "Artvin"
           },
           "street": "Hagan",
           "flatNumber": 2,
@@ -1570,7 +1548,7 @@
             {
               "city": {
                 "id": 10,
-                "name": "Oklahoma City"
+                "name": "Artvin"
               },
               "street": "Crescent Oaks",
               "flatNumber": 2,
@@ -1633,7 +1611,7 @@
           "id": 1,
           "city": {
             "id": 7,
-            "name": "Dallas"
+            "name": "Ankara"
           },
           "street": "Fordem",
           "flatNumber": 15,
@@ -1643,7 +1621,7 @@
           "id": 2,
           "city": {
             "id": 7,
-            "name": "Dallas"
+            "name": "Ankara"
           },
           "street": "Hagan",
           "flatNumber": 8,
@@ -1662,12 +1640,12 @@
           "accountNumber": "1952488346",
           "accountName": "condimentum",
           "description": "Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.",
-          "status": "canceled",
+          "status": "passive",
           "addresses": [
             {
               "city": {
                 "id": 4,
-                "name": "Houston"
+                "name": "Ağrı"
               },
               "street": "Westerfield",
               "flatNumber": 14,
@@ -1695,7 +1673,7 @@
           "id": 1,
           "city": {
             "id": 4,
-            "name": "Houston"
+            "name": "Ağrı"
           },
           "street": "Talmadge",
           "flatNumber": 13,
@@ -1727,7 +1705,7 @@
           "id": 1,
           "city": {
             "id": 4,
-            "name": "Houston"
+            "name": "Ağrı"
           },
           "street": "Mayer",
           "flatNumber": 3,
@@ -1751,7 +1729,7 @@
             {
               "city": {
                 "id": 4,
-                "name": "Houston"
+                "name": "Ağrı"
               },
               "street": "Autumn Leaf",
               "flatNumber": 4,
@@ -1814,7 +1792,7 @@
           "id": 1,
           "city": {
             "id": 7,
-            "name": "Dallas"
+            "name": "Ankara"
           },
           "street": "Hudson",
           "flatNumber": 4,
@@ -1824,7 +1802,7 @@
           "id": 2,
           "city": {
             "id": 4,
-            "name": "Houston"
+            "name": "Ağrı"
           },
           "street": "Moose",
           "flatNumber": 17,
@@ -1848,7 +1826,7 @@
             {
               "city": {
                 "id": 4,
-                "name": "Houston"
+                "name": "Ağrı"
               },
               "street": "Ramsey",
               "flatNumber": 16,
@@ -1897,12 +1875,12 @@
           "accountNumber": "9927319517",
           "accountName": "mauris",
           "description": "Sed vel enim sit amet nunc viverra dapibus.",
-          "status": "canceled",
+          "status": "passive",
           "addresses": [
             {
               "city": {
                 "id": 4,
-                "name": "Houston"
+                "name": "Ağrı"
               },
               "street": "Talisman",
               "flatNumber": 2,
@@ -1956,7 +1934,7 @@
             {
               "city": {
                 "id": 7,
-                "name": "Dallas"
+                "name": "Ankara"
               },
               "street": "Fremont",
               "flatNumber": 4,
@@ -2019,7 +1997,7 @@
           "id": 1,
           "city": {
             "id": 8,
-            "name": "San Jose"
+            "name": "Antalya"
           },
           "street": "Delaware",
           "flatNumber": 14,
@@ -2043,7 +2021,7 @@
             {
               "city": {
                 "id": 8,
-                "name": "San Jose"
+                "name": "Antalya"
               },
               "street": "Manufacturers",
               "flatNumber": 16,
@@ -2097,7 +2075,7 @@
             {
               "city": {
                 "id": 8,
-                "name": "San Jose"
+                "name": "Antalya"
               },
               "street": "Lake View",
               "flatNumber": 17,
@@ -2160,7 +2138,7 @@
           "id": 1,
           "city": {
             "id": 8,
-            "name": "San Jose"
+            "name": "Antalya"
           },
           "street": "2nd",
           "flatNumber": 16,
@@ -2179,12 +2157,12 @@
           "accountNumber": "7965006006",
           "accountName": "a",
           "description": "Sed accumsan felis.",
-          "status": "canceled",
+          "status": "passive",
           "addresses": [
             {
               "city": {
                 "id": 8,
-                "name": "San Jose"
+                "name": "Antalya"
               },
               "street": "Havey",
               "flatNumber": 7,
@@ -2238,7 +2216,7 @@
             {
               "city": {
                 "id": 5,
-                "name": "Phoenix"
+                "name": "Aksaray"
               },
               "street": "Laurel",
               "flatNumber": 10,
@@ -2287,12 +2265,12 @@
           "accountNumber": "8843526243",
           "accountName": "aliquet",
           "description": "Donec vitae nisi.",
-          "status": "canceled",
+          "status": "passive",
           "addresses": [
             {
               "city": {
                 "id": 7,
-                "name": "Dallas"
+                "name": "Ankara"
               },
               "street": "Lukken",
               "flatNumber": 3,
@@ -2355,7 +2333,7 @@
           "id": 1,
           "city": {
             "id": 7,
-            "name": "Dallas"
+            "name": "Ankara"
           },
           "street": "Gateway",
           "flatNumber": 19,
@@ -2374,12 +2352,12 @@
           "accountNumber": "9347198110",
           "accountName": "nibh",
           "description": "Aenean lectus.",
-          "status": "canceled",
+          "status": "passive",
           "addresses": [
             {
               "city": {
                 "id": 7,
-                "name": "Dallas"
+                "name": "Ankara"
               },
               "street": "Sauthoff",
               "flatNumber": 3,
@@ -2442,7 +2420,7 @@
           "id": 1,
           "city": {
             "id": 10,
-            "name": "Oklahoma City"
+            "name": "Artvin"
           },
           "street": "Laurel",
           "flatNumber": 4,
@@ -2461,12 +2439,12 @@
           "accountNumber": "8274453530",
           "accountName": "vestibulum",
           "description": "Maecenas pulvinar lobortis est.",
-          "status": "canceled",
+          "status": "passive",
           "addresses": [
             {
               "city": {
                 "id": 10,
-                "name": "Oklahoma City"
+                "name": "Artvin"
               },
               "street": "Cordelia",
               "flatNumber": 1,
@@ -2520,7 +2498,7 @@
             {
               "city": {
                 "id": 10,
-                "name": "Oklahoma City"
+                "name": "Artvin"
               },
               "street": "Loomis",
               "flatNumber": 6,
@@ -2858,43 +2836,43 @@
   "cities": [
     {
       "id": 1,
-      "name": "New York"
+      "name": "Adana"
     },
     {
       "id": 2,
-      "name": "Los Angeles"
+      "name": "Adıyaman"
     },
     {
       "id": 3,
-      "name": "Chicago"
+      "name": "Afyonkarahisar"
     },
     {
       "id": 4,
-      "name": "Houston"
+      "name": "Ağrı"
     },
     {
       "id": 5,
-      "name": "Phoenix"
+      "name": "Aksaray"
     },
     {
       "id": 6,
-      "name": "San Diego"
+      "name": "Amasya"
     },
     {
       "id": 7,
-      "name": "Dallas"
+      "name": "Ankara"
     },
     {
       "id": 8,
-      "name": "San Jose"
+      "name": "Antalya"
     },
     {
       "id": 9,
-      "name": "Seattle"
+      "name": "Ardahan"
     },
     {
       "id": 10,
-      "name": "Oklahoma City"
+      "name": "Artvin"
     }
   ],
   "users": [
