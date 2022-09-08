@@ -105,3 +105,6 @@ label {
 ::ng-deep .e-btn-edit:hover {
   border: 6px solid #f58220;
 }
+.e-btn-edit:hover {
+  background-color: #f58220 !important;
+}

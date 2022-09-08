@@ -16,8 +16,28 @@
   margin-top: -15px;
   margin-left: 30px;
 }
-
-::ng-deep .e-btn-edit {
+.e-btn-edit {
   width: 35px;
   height: 39px;
+}
+.e-btn-edit:hover {
+  background-color: #f58220 !important;
+}
+.e-btn-remove {
+  width: 35px;
+  height: 39px;
+}
+.e-btn-remove:hover {
+  background-color: #f58220 !important
+  ;
+}
+.p-toast .p-toast-message .p-toast-message-content {
+  width: 734px !important;
+}
+::ng-deep .warn-toast .p-toast .p-toast-message .p-toast-icon-close {
+  display: none;
+}
+
+::ng-deep .warn-toast .p-toast .p-toast-message .p-toast-icon-close:hover {
+  display: none;
 }

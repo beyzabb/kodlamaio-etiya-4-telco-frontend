@@ -70,9 +70,7 @@
         type="number"
         etiyaInput="dark"
         formControlName="gsmNumber"
-        placeholder="+90"
-        max="99999999999"
-        min="1"
+        appPhoneMask
         #gsmNumber
         [ngClass]="{
           'invalid-input': isShow && searchForm.controls['gsmNumber'].errors
@@ -94,7 +92,7 @@
       <input
         type="text"
         etiyaInput="dark"
-        formControlName="lastname"
+        formControlName="lastName"
         #lastName
       />
 

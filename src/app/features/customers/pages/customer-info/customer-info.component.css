@@ -41,8 +41,18 @@
   margin-right: 15px;
 }
 ::ng-deep .e-btn-remove:hover {
-  border: 6px solid #f58220;
+  background-color: #f58220;
 }
 ::ng-deep .e-btn-edit:hover {
-  border: 6px solid #f58220;
+  background-color: #f58220;
+}
+.e-btn-remove {
+  height: 47px;
+}
+::ng-deep .warn-toast .p-toast .p-toast-message .p-toast-icon-close {
+  display: none;
+}
+
+::ng-deep .warn-toast .p-toast .p-toast-message .p-toast-icon-close:hover {
+  display: none;
 }
