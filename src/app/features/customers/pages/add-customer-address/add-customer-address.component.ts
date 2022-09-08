@@ -32,6 +32,17 @@ export class AddCustomerAddressComponent implements OnInit {
   ngOnInit(): void {
     this.getParams();
     this.getCityList();
+
+    this.messageService.clearObserver.subscribe((data) => {
+      if (data == 'r') {
+        this.messageService.clear();
+      } else if (data == 'c') {
+        this.messageService.clear();
+        this.router.navigateByUrl(
+          '/dashboard/customers/customer-address/' + this.selectedCustomerId
+        );
+      }
+    });
   }
 
   getParams() {
@@ -69,7 +80,7 @@ export class AddCustomerAddressComponent implements OnInit {
 
   createAddressForm() {
     this.addressForm = this.formBuilder.group({
-      city: [this.addressToUpdate?.city.id || 0, Validators.required],
+      city: [this.addressToUpdate?.city.id || '', Validators.required],
       street: [this.addressToUpdate?.street || '', Validators.required],
       flatNumber: [this.addressToUpdate?.flatNumber || '', Validators.required],
       description: [
@@ -85,11 +96,6 @@ export class AddCustomerAddressComponent implements OnInit {
     });
   }
 
-  save() {
-    if (this.addressToUpdate === undefined) this.add();
-    else this.update();
-  }
-
   add() {
     const addressToAdd: Address = {
       ...this.addressForm.value,
@@ -97,7 +103,32 @@ export class AddCustomerAddressComponent implements OnInit {
         (city) => city.id == this.addressForm.value.city
       ),
     };
-    this.customerService.addAddress(addressToAdd, this.customer).subscribe();
+    this.customerService.addAddress(addressToAdd, this.customer).subscribe({
+      next: (data) => {
+        this.messageService.add({
+          detail: 'Sucsessfully added',
+          severity: 'success',
+          summary: 'Add',
+          key: 'etiya-custom',
+        });
+        this.router.navigateByUrl(
+          `/dashboard/customers/customer-address/${data.id}`
+        );
+      },
+      error: (err) => {
+        this.messageService.add({
+          detail: 'Error created',
+          severity: 'danger',
+          summary: 'Error',
+          key: 'etiya-custom',
+        });
+      },
+    });
+  }
+
+  save() {
+    if (this.addressToUpdate === undefined) this.add();
+    else this.update();
   }
 
   update() {
@@ -110,6 +141,34 @@ export class AddCustomerAddressComponent implements OnInit {
     };
     this.customerService
       .updateAddress(addressToUpdate, this.customer)
-      .subscribe();
+      .subscribe({
+        next: (data) => {
+          this.messageService.add({
+            detail: 'Sucsessfully added',
+            severity: 'success',
+            summary: 'Update',
+            key: 'etiya-custom',
+          });
+          this.router.navigateByUrl(
+            `/dashboard/customers/customer-address/${data.id}`
+          );
+        },
+        error: (err) => {
+          this.messageService.add({
+            detail: 'Error created',
+            severity: 'danger',
+            summary: 'Error',
+            key: 'etiya-custom',
+          });
+        },
+      });
+  }
+  cancelChanges() {
+    this.messageService.add({
+      key: 'c',
+      sticky: true,
+      severity: 'warn',
+      detail: 'Your changes could not be saved. Are you sure?',
+    });
   }
 }

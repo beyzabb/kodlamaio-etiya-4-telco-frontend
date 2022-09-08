@@ -67,7 +67,7 @@ export class AddAddressInfoComponent implements OnInit {
   createAddressForm() {
     this.addressForm = this.formBuilder.group({
       city: [
-        this.addressList?.city?.id || 0,
+        this.addressList?.city?.id || '',
         [Validators.required, Validators.min(1)],
       ],
       street: [this.addressList?.street || '', Validators.required],

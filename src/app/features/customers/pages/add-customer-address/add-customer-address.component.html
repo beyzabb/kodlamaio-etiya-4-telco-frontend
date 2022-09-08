@@ -14,9 +14,6 @@
       </div>
       <div class="d-flex justify-content-center m-8">
         <div class="e-address-form-container">
-          <div class="row">
-            <a class="e-form-close" routerLink="/list-address-info">X</a>
-          </div>
           <form *ngIf="addressForm" [formGroup]="addressForm">
             <div class="row">
               <div class="col-12 col-xl-5">
@@ -32,7 +29,7 @@
                         id="gender"
                         formControlName="city"
                       >
-                        <option selected disabled hidden [value]="0">
+                        <option selected disabled hidden [value]="">
                           Choose a city
                         </option>
                         <option *ngFor="let city of cityList" [value]="city.id">
@@ -129,8 +126,17 @@
               </div>
             </div>
             <div class="row mt-2 d-flex justify-content-center">
-              <div class="col-2">
-                <button etiyaButton="clear" (click)="save()">SAVE</button>
+              <div class="e-buttons">
+                <button etiyaButton="clear" (click)="cancelChanges()">
+                  CANCEL
+                </button>
+                <button
+                  etiyaButton="clear"
+                  (click)="save()"
+                  style="margin-left: 875px"
+                >
+                  SAVE
+                </button>
               </div>
             </div>
           </form>
