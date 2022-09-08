@@ -6,7 +6,7 @@
       "firstName": "Prudi",
       "middleName": "Meta",
       "lastName": "Gronw",
-      "birthDate": "4/15/1998",
+      "birthDate": "0333-01-01",
       "gender": "Female",
       "nationalityId": 48776304564,
       "role": "cooperative",
@@ -463,16 +463,6 @@
           "street": "Mcguire",
           "flatNumber": 18,
           "description": "03957 Sloan Trail"
-        },
-        {
-          "city": {
-            "id": 2,
-            "name": "Adıyaman"
-          },
-          "street": "gdfgdf",
-          "flatNumber": 5444,
-          "description": "ytrdytryt",
-          "id": 3
         }
       ],
       "contactMedium": {
@@ -931,7 +921,7 @@
       "firstName": "Shell",
       "middleName": "Constanta",
       "lastName": "Covendon",
-      "birthDate": "8/29/1974",
+      "birthDate": "1974-08-23",
       "gender": "Female",
       "nationalityId": 86587722781,
       "role": "cooperative",
