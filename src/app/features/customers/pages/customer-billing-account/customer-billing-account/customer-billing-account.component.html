@@ -28,8 +28,19 @@
                   type="text-area"
                   etiyaInput="dark"
                   formControlName="accountName"
+                  [ngClass]="{
+                    'invalid-input':
+                      isEmpty && accountForm.controls['accountName'].errors
+                  }"
                 />
               </div>
+              <small
+                *ngIf="isEmpty && accountForm.controls['accountName'].errors"
+                class="p-error block ng-invalid ng-dirty"
+                style="color: red; margin-left: 487px"
+              >
+                compulsory fields must be filled.
+              </small>
             </div>
           </div>
           <div class="col-12 mb-5">
@@ -46,8 +57,22 @@
                   class="e-address-desc"
                   placeholder=""
                   formControlName="accountDescription"
+                  [ngClass]="{
+                    'invalid-input':
+                      isEmpty &&
+                      accountForm.controls['accountDescription'].errors
+                  }"
                 ></textarea>
               </div>
+              <small
+                *ngIf="
+                  isEmpty && accountForm.controls['accountDescription'].errors
+                "
+                class="p-error block ng-invalid ng-dirty"
+                style="color: red"
+              >
+                compulsory fields must be filled.
+              </small>
             </div>
           </div>
         </div>
@@ -83,10 +108,11 @@
                   <ng-template #customerAddressList>
                     <tr *ngFor="let billingadr of billingAdress">
                       <th style="display: flex">
-                        <!-- <div>
+                        <div>
                           <button etiyaButton="edit"></button>
-                        </div> -->
-                        <div style="margin-left: 65px">
+                          <button etiyaButton="remove"></button>
+                        </div>
+                        <div style="margin-left: 50px">
                           {{ billingadr.city.name }}
                         </div>
                       </th>
@@ -107,7 +133,9 @@
         <div class="d-flex justify-content-center">
           <div class="row mt-5 w-75">
             <div class="col-12 col-lg-6 d-flex justify-content-lg-start">
-              <button etiyaButton="clear" routerLink="recipes">CANCEL</button>
+              <button etiyaButton="clear" (click)="goToPreviousPage()">
+                CANCEL
+              </button>
             </div>
             <div class="col-12 col-lg-5 d-flex justify-content-lg-end">
               <button etiyaButton="clear" (click)="add()">Create</button>
@@ -130,6 +158,10 @@
                       name="gender"
                       id="gender"
                       formControlName="city"
+                      [ngClass]="{
+                        'invalid-input':
+                          isValid && addressForm.controls['city'].errors
+                      }"
                     >
                       <option selected disabled hidden value="">
                         Choose a city
@@ -139,6 +171,13 @@
                       </option>
                     </select>
                   </div>
+                  <small
+                    *ngIf="isValid && addressForm.controls['city'].errors"
+                    class="p-error block ng-invalid ng-dirty"
+                    style="color: red"
+                  >
+                    compulsory fields must be filled.
+                  </small>
                 </div>
               </div>
             </div>
@@ -154,8 +193,19 @@
                     type="text"
                     etiyaInput="dark"
                     formControlName="flatNumber"
+                    [ngClass]="{
+                      'invalid-input':
+                        isValid && addressForm.controls['flatNumber'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="isValid && addressForm.controls['flatNumber'].errors"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 288px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
             <div class="col-12 col-xl-5">
@@ -170,8 +220,19 @@
                     type="text"
                     etiyaInput="dark"
                     formControlName="street"
+                    [ngClass]="{
+                      'invalid-input':
+                        isValid && addressForm.controls['street'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="isValid && addressForm.controls['street'].errors"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 203px"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
             <div class="col-12">
@@ -186,14 +247,35 @@
                     class="e-address-desc"
                     placeholder=""
                     formControlName="description"
+                    [ngClass]="{
+                      'invalid-input':
+                        isValid && addressForm.controls['description'].errors
+                    }"
                   ></textarea>
                 </div>
+                <small
+                  *ngIf="isValid && addressForm.controls['description'].errors"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red"
+                >
+                  compulsory fields must be filled.
+                </small>
               </div>
             </div>
           </div>
-          <div class="row mt-2 d-flex justify-content-center">
-            <div class="col-2">
-              <button etiyaButton="clear" (click)="addAddress()">SAVE</button>
+          <div class="d-flex justify-content-center">
+            <div class="row mt-5 w-75">
+              <div class="col-12 col-lg-6 d-flex justify-content-lg-start">
+                <button etiyaButton="clear" (click)="cancelChanges()">
+                  CANCEL
+                </button>
+              </div>
+              <div
+                class="col-12 col-lg-5 d-flex justify-content-lg-end"
+                style="margin-left: 72px"
+              >
+                <button etiyaButton="clear" (click)="addAddress()">NEXT</button>
+              </div>
             </div>
           </div>
         </form>

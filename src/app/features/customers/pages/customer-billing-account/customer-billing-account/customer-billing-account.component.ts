@@ -7,6 +7,7 @@ import { CustomersService } from '../../../services/customer/customers.service';
 import { Address } from '../../../models/address';
 import { Customer } from '../../../models/customer';
 import { BillingAccount } from '../../../models/billingAccount';
+import { MessageService } from 'primeng/api';
 
 @Component({
   templateUrl: './customer-billing-account.component.html',
@@ -16,11 +17,12 @@ export class CustomerBillingAccountComponent implements OnInit {
   accountForm!: FormGroup;
   addressForm!: FormGroup;
   isShown: boolean = false;
+  isValid: boolean = false;
+  isEmpty: boolean = false;
   cityList!: City[];
   selectedCustomerId!: number;
   customer!: Customer;
   billingAccount!: BillingAccount;
-
   billingAdress: Address[] = [];
 
   constructor(
@@ -28,12 +30,28 @@ export class CustomerBillingAccountComponent implements OnInit {
     private cityService: CityService,
     private customerService: CustomersService,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.getParams();
     this.getCityList();
+    this.messageService.clearObserver.subscribe((data) => {
+      if (data == 'r') {
+        this.messageService.clear();
+      } else if (data == 'c') {
+        this.messageService.clear();
+        if (this.isShown == true) {
+          this.isShown = false;
+        } else {
+          this.router.navigateByUrl(
+            '/dashboard/customers/customer-billing-account-detail/' +
+              this.selectedCustomerId
+          );
+        }
+      }
+    });
   }
 
   getParams() {
@@ -86,23 +104,60 @@ export class CustomerBillingAccountComponent implements OnInit {
   }
 
   addAddress() {
-    const addressToAdd: Address = {
-      ...this.addressForm.value,
-      city: this.cityList.find(
-        (city) => city.id == this.addressForm.value.city.id
-      ),
-    };
-    this.billingAdress.push(addressToAdd);
-    console.log(this.billingAdress);
-    this.isShown = false;
+    if (this.addressForm.valid) {
+      this.isValid = false;
+      const addressToAdd: Address = {
+        ...this.addressForm.value,
+        city: this.cityList.find(
+          (city) => city.id == this.addressForm.value.city.id
+        ),
+      };
+      this.billingAdress.push(addressToAdd);
+      console.log(this.billingAdress);
+      this.isShown = false;
+    } else {
+      this.isValid = true;
+      this.isEmpty = false;
+    }
   }
 
   add() {
-    this.billingAccount = this.accountForm.value;
-    this.billingAccount.addresses = this.billingAdress;
-    console.log(this.billingAccount);
-    this.customerService
-      .addBillingAccount(this.billingAccount, this.customer)
-      .subscribe();
+    if (this.accountForm.valid) {
+      this.isEmpty = false;
+      this.billingAccount = this.accountForm.value;
+      this.billingAccount.addresses = this.billingAdress;
+      this.billingAccount.status = 'active';
+      this.billingAccount.accountNumber = String(
+        Math.floor(Math.random() * 1000000000)
+      );
+      console.log(this.billingAccount);
+      this.customerService
+        .addBillingAccount(this.billingAccount, this.customer)
+        .subscribe();
+      this.router.navigateByUrl(
+        '/dashboard/customers/customer-billing-account-detail/' +
+          this.selectedCustomerId
+      );
+    } else {
+      this.isEmpty = true;
+      this.isValid = false;
+    }
+  }
+
+  cancelChanges() {
+    this.messageService.add({
+      key: 'c',
+      sticky: true,
+      severity: 'warn',
+      detail: 'Your changes could not be saved. Are you sure?',
+    });
+  }
+  goToPreviousPage() {
+    this.messageService.add({
+      key: 'c',
+      sticky: true,
+      severity: 'warn',
+      detail: 'Your changes could not be saved. Are you sure?',
+    });
   }
 }
