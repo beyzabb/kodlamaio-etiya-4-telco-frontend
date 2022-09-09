@@ -20,15 +20,6 @@
         min="1"
         #nationalityId
       />
-      <!-- <div
-        *ngIf="
-          searchForm.get('id')?.hasError('required') &&
-          searchForm.get('id')?.touched
-        "
-        style="color: red; margin-left: 15px; margin-top: -15px"
-      >
-        Name must be at least 5 characters long.
-      </div> -->
 
       <label class="e-label">CUSTOMER ID</label>
       <input
@@ -52,33 +43,18 @@
         (keypress)="isNumber($event)"
         onKeyPress="if(this.value.length==10) return false;"
         #accountNumber
-        [ngClass]="{
-          'invalid-input': isShow && searchForm.controls['accountNumber'].errors
-        }"
       />
-      <small
-        *ngIf="isShow && searchForm.controls['accountNumber'].errors"
-        class="p-error block ng-invalid ng-dirty"
-      >
-        You entered a missing number.
-      </small>
 
       <label class="e-label">GSM NUMBER</label>
       <input
-        (keypress)="isNumber($event)"
-        onKeyPress="if(this.value.length==11) return false;"
-        type="number"
+        type="text"
+        appPhoneMask2
+        onKeyPress="if(this.value.length==16) return false;"
         etiyaInput="dark"
+        class="e-contact-input"
         formControlName="gsmNumber"
-        appPhoneMask
         #gsmNumber
-        [ngClass]="{
-          'invalid-input': isShow && searchForm.controls['gsmNumber'].errors
-        }"
       />
-      <small *ngIf="isShow && searchForm.controls['gsmNumber'].errors">
-        You entered a missing number.
-      </small>
 
       <label class="e-label">FIRST NAME</label>
       <input
@@ -116,9 +92,10 @@
       etiyaButton="search"
       (click)="search()"
       [disabled]="
-        searchForm.valid &&
         nationalityId.value.length === 0 &&
         customerId.value.length === 0 &&
+        gsmNumber.value.length === 0 &&
+        accountNumber.value.length === 0 &&
         firstName.value.length === 0 &&
         lastName.value.length === 0 &&
         orderNumber.value.length === 0

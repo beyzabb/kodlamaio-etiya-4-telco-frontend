@@ -30,8 +30,8 @@ export class SideFilterComponent implements OnInit {
     this.searchForm = this.formBuilder.group({
       nationalityId: [''],
       customerId: [''],
-      accountNumber: ['', [Validators.pattern('^[0-9]{10}$')]],
-      gsmNumber: ['', [Validators.pattern('^[0-9]{11}$')]],
+      accountNumber: [''],
+      gsmNumber: [''],
       firstName: [''],
       lastName: [''],
       orderNumber: [''],
@@ -39,19 +39,14 @@ export class SideFilterComponent implements OnInit {
   }
 
   search() {
-    if (this.searchForm.valid) {
-      this.isShow = false;
-      let nationalityId = parseInt(this.searchForm.value.nationalityId);
-      const newSearchForm = {
-        ...this.searchForm.value,
-        nationalityId: nationalityId,
-      };
-      this.customersService.getListByFilter(newSearchForm).subscribe((data) => {
-        this.filteredData.emit(data);
-      });
-    } else {
-      this.isShow = true;
-    }
+    let nationalityId = parseInt(this.searchForm.value.nationalityId);
+    const newSearchForm = {
+      ...this.searchForm.value,
+      nationalityId: nationalityId,
+    };
+    this.customersService.getListByFilter(newSearchForm).subscribe((data) => {
+      this.filteredData.emit(data);
+    });
   }
 
   clear() {

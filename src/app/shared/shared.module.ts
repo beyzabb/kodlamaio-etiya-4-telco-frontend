@@ -34,6 +34,10 @@ import { TableScrollComponent } from './components/table-scroll/table-scroll.com
 import { TableAccordionHeaderComponent } from './components/table-accordion-header/table-accordion-header.component';
 import { StoreModule } from '@ngrx/store';
 import { sharedReducers } from './store/shared.reducers';
+import { OfferDetailPopUpComponent } from './components/offer-detail-pop-up/offer-detail-pop-up.component';
+import { DialogModule } from 'primeng/dialog';
+import { CustomersModule } from '../features/customers/customers.module';
+import { PhoneMaskDirective } from './directives/phone-mask.directive';
 
 @NgModule({
   declarations: [
@@ -63,6 +67,8 @@ import { sharedReducers } from './store/shared.reducers';
     CheckBoxDirective,
     TableScrollComponent,
     TableAccordionHeaderComponent,
+    OfferDetailPopUpComponent,
+    PhoneMaskDirective,
   ],
   imports: [
     CommonModule,
@@ -72,6 +78,7 @@ import { sharedReducers } from './store/shared.reducers';
     ReactiveFormsModule,
     RouterModule,
     StoreModule.forRoot(sharedReducers),
+    DialogModule,
   ],
   exports: [
     OverlayTitleComponent,
@@ -98,7 +105,8 @@ import { sharedReducers } from './store/shared.reducers';
     InputDirective,
     TableScrollComponent,
     TableAccordionHeaderComponent,
+    OfferDetailPopUpComponent,
   ],
-  providers: [MessageService],
+  providers: [MessageService, PhoneMaskDirective],
 })
 export class SharedModule {}

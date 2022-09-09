@@ -37,7 +37,7 @@
       "contactMedium": {
         "email": "cgronw0@imgur.com",
         "homePhone": "391 151 6866",
-        "mobilePhone": "+420 139 504 9728",
+        "mobilePhone": "555 547 89 45",
         "fax": "424-325-3276"
       },
       "billingAccounts": [
@@ -195,6 +195,12 @@
               ]
             }
           ]
+        },
+        {
+          "accountName": "",
+          "accountDescription": "",
+          "addresses": [],
+          "id": 2630
         }
       ]
     },
@@ -225,7 +231,7 @@
       "contactMedium": {
         "email": "lbonnet1@php.net",
         "homePhone": "435 794 2158",
-        "mobilePhone": "+56 807 800 0837",
+        "mobilePhone": "556 123 45 78",
         "fax": "161-335-2467"
       },
       "billingAccounts": [
@@ -428,6 +434,69 @@
               ]
             }
           ]
+        },
+        {
+          "accountName": "",
+          "accountDescription": "",
+          "addresses": [],
+          "id": 2094
+        },
+        {
+          "accountName": "nfgkzjdg",
+          "accountDescription": "dsgmds gd",
+          "addresses": [
+            {
+              "id": 12,
+              "city": {
+                "id": 4,
+                "name": "Ağrı"
+              },
+              "street": "sdvm zöc ",
+              "flatNumber": "ğpkjohnbvg",
+              "description": "şlmkn b"
+            }
+          ],
+          "status": "active",
+          "accountNumber": "195644587",
+          "id": 3725
+        },
+        {
+          "accountName": "kvlnsdvkds",
+          "accountDescription": "kvmz  dföö",
+          "addresses": [
+            {
+              "id": 662,
+              "city": {
+                "id": 4,
+                "name": "Ağrı"
+              },
+              "street": "dsv zdmf vdf",
+              "flatNumber": "f vzfd ö vdö",
+              "description": "çöm nbvbnklşmn "
+            }
+          ],
+          "status": "active",
+          "accountNumber": "513672958",
+          "id": 3286
+        },
+        {
+          "accountName": "aaa",
+          "accountDescription": "aaaa",
+          "addresses": [
+            {
+              "id": 860,
+              "city": {
+                "id": 3,
+                "name": "Afyonkarahisar"
+              },
+              "street": "aaaaaaaaa",
+              "flatNumber": "aaaaaaaa",
+              "description": "aaaaaaaaa"
+            }
+          ],
+          "status": "active",
+          "accountNumber": "432928791",
+          "id": 4851
         }
       ]
     },
@@ -468,7 +537,7 @@
       "contactMedium": {
         "email": "lolivelli3@xing.com",
         "homePhone": "860 185 0942",
-        "mobilePhone": "+62 880 162 9164",
+        "mobilePhone": "(506) 456 89 56",
         "fax": "941-369-6714"
       },
       "billingAccounts": [
@@ -565,7 +634,7 @@
       "contactMedium": {
         "email": "tsneden4@dion.ne.jp",
         "homePhone": "338 889 4237",
-        "mobilePhone": "+47 413 228 9722",
+        "mobilePhone": "(545) 789 65 12",
         "fax": "431-596-5940"
       },
       "billingAccounts": [
@@ -719,7 +788,7 @@
       "contactMedium": {
         "email": "gglaum5@friendfeed.com",
         "homePhone": "959 663 3841",
-        "mobilePhone": "+62 123 136 8425",
+        "mobilePhone": "(505) 635 78 56",
         "fax": "860-838-7996"
       },
       "billingAccounts": [
@@ -811,7 +880,7 @@
       "contactMedium": {
         "email": "hcreavan6@sogou.com",
         "homePhone": "417 917 2624",
-        "mobilePhone": "+880 725 467 2466",
+        "mobilePhone": "(505) 892 45 61",
         "fax": "235-686-1978"
       },
       "billingAccounts": [
@@ -942,7 +1011,7 @@
       "contactMedium": {
         "email": "hcovendon7@prweb.com",
         "homePhone": "905 148 4726",
-        "mobilePhone": "+7 468 566 8844",
+        "mobilePhone": "(545) 159 78 45",
         "fax": "133-283-6029"
       },
       "billingAccounts": [
@@ -1092,7 +1161,7 @@
       "contactMedium": {
         "email": "tdraysey8@reference.com",
         "homePhone": "300 881 9277",
-        "mobilePhone": "+81 432 172 7029",
+        "mobilePhone": "(545) 126 8564",
         "fax": "401-508-3426"
       },
       "billingAccounts": [
@@ -1282,7 +1351,7 @@
       "contactMedium": {
         "email": "slhommee9@wordpress.com",
         "homePhone": "896 290 1477",
-        "mobilePhone": "+27 644 939 1809",
+        "mobilePhone": "(545) 123 95 86",
         "fax": "153-918-4828"
       },
       "billingAccounts": [
@@ -1462,7 +1531,7 @@
       "contactMedium": {
         "email": "tbeamanda@barnesandnoble.com",
         "homePhone": "709 316 0858",
-        "mobilePhone": "+48 488 171 0432",
+        "mobilePhone": "(505) 953 36 45",
         "fax": "634-880-7592"
       },
       "billingAccounts": [
@@ -1524,7 +1593,7 @@
       "contactMedium": {
         "email": "rpiquardb@sogou.com",
         "homePhone": "558 480 6684",
-        "mobilePhone": "+351 632 523 3168",
+        "mobilePhone": "(504) 156 87 63",
         "fax": "135-946-5367"
       },
       "billingAccounts": [
@@ -1621,7 +1690,7 @@
       "contactMedium": {
         "email": "jwicklinc@hp.com",
         "homePhone": "458 241 4637",
-        "mobilePhone": "+62 511 948 6109",
+        "mobilePhone": "(505) 123 65 74",
         "fax": "530-730-4844"
       },
       "billingAccounts": [
@@ -1673,7 +1742,7 @@
       "contactMedium": {
         "email": "poffordd@reference.com",
         "homePhone": "959 560 0988",
-        "mobilePhone": "+92 559 627 7226",
+        "mobilePhone": "(503) 132 01 54",
         "fax": "451-636-4222"
       },
       "billingAccounts": []
@@ -1705,7 +1774,7 @@
       "contactMedium": {
         "email": "askeltone@google.com",
         "homePhone": "837 721 4760",
-        "mobilePhone": "+63 470 955 1632",
+        "mobilePhone": "(541) 012 13 56",
         "fax": "710-337-8552"
       },
       "billingAccounts": [
@@ -1802,7 +1871,7 @@
       "contactMedium": {
         "email": "twheatmanf@acquirethisname.com",
         "homePhone": "168 563 6107",
-        "mobilePhone": "+55 416 748 8142",
+        "mobilePhone": "(502) 329 32 58",
         "fax": "172-172-1083"
       },
       "billingAccounts": [
@@ -1997,7 +2066,7 @@
       "contactMedium": {
         "email": "eaveryg@europa.eu",
         "homePhone": "775 122 6171",
-        "mobilePhone": "+54 119 784 5861",
+        "mobilePhone": "(502) 123 60 85",
         "fax": "818-926-4319"
       },
       "billingAccounts": [
@@ -2138,7 +2207,7 @@
       "contactMedium": {
         "email": "kcathenodh@github.io",
         "homePhone": "991 439 3559",
-        "mobilePhone": "+48 331 924 6342",
+        "mobilePhone": "(505) 545 20 65",
         "fax": "404-417-8446"
       },
       "billingAccounts": [
@@ -2420,7 +2489,7 @@
       "contactMedium": {
         "email": "gerdisj@furl.net",
         "homePhone": "657 600 3262",
-        "mobilePhone": "+420 275 850 8752",
+        "mobilePhone": "(501) 265 10 11",
         "fax": "176-112-8827"
       },
       "billingAccounts": [
@@ -2533,6 +2602,41 @@
           ]
         }
       ]
+    },
+    {
+      "customerId": 9999,
+      "firstName": "hfg",
+      "middleName": null,
+      "lastName": "gfdgfg",
+      "birthDate": "2022-09-15",
+      "gender": "Female",
+      "nationalityId": 55222222222,
+      "role": "individual",
+      "motherName": null,
+      "fatherName": null,
+      "addresses": [
+        {
+          "city": {
+            "id": 4,
+            "name": "Ağrı"
+          },
+          "street": "fgfgfdg",
+          "flatNumber": 24564,
+          "description": "jhjghjghj",
+          "id": 1,
+          "type": "[CustomerToAdd] Add Address Info"
+        }
+      ],
+      "contactMedium": {
+        "email": "mert@gml.com",
+        "homePhone": "",
+        "mobilePhone": "(555) 555-55555",
+        "fax": null,
+        "type": "[CustomerToAdd] Set ContactMedium Info"
+      },
+      "billingAccounts": [],
+      "type": "[CustomerToAdd] Set Demographic Info",
+      "id": 21
     }
   ],
   "offers": [
