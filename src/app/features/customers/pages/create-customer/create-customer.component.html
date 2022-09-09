@@ -106,6 +106,8 @@
                     type="date"
                     etiyaInput="dark"
                     formControlName="birthDate"
+                    [max]="today | date: 'yyyy-MM-dd'"
+                    (blur)="onDateChange($event)"
                     [ngClass]="{
                       'invalid-input':
                         isShow && profileForm.controls['birthDate'].errors
@@ -113,11 +115,18 @@
                   />
                 </div>
                 <small
-                  *ngIf="isShow && profileForm.controls['birthDate'].errors"
+                  *ngIf="futureDate"
                   class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-left: 380px; margin-top: -20px"
+                  style="color: red; margin-left: 220px; margin-top: -20px"
                 >
-                  compulsory fields must be filled.
+                  Please enter a valid date of birth
+                </small>
+                <small
+                  *ngIf="under18"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 220px; margin-top: -20px"
+                >
+                  The customer cannot be under the age of 18.
                 </small>
               </div>
             </div>
