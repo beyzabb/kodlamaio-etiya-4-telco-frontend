@@ -56,3 +56,10 @@
 ::ng-deep .main-box {
   height: auto !important;
 }
+input::placeholder {
+  color: #fff;
+}
+.invalid-input {
+  color: red !important;
+  border-color: red !important;
+}
