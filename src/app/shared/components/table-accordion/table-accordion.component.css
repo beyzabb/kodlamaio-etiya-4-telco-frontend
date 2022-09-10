@@ -104,3 +104,11 @@
   flex-direction: column;
   justify-content: center;
 }
+
+::ng-deep .warn-toast .p-toast .p-toast-message .p-toast-icon-close {
+  display: none;
+}
+
+::ng-deep .warn-toast .p-toast .p-toast-message .p-toast-icon-close:hover {
+  display: none;
+}

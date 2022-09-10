@@ -21,6 +21,7 @@ import { OfferSelectionComponent } from './pages/offer-selection/offer-selection
 import { AddCustomerAddressComponent } from './pages/add-customer-address/add-customer-address.component';
 import { CityModule } from '../city/city.module';
 import { PhoneMaskDirective } from './directives/phone-mask.directive';
+import { CustomerBillingAccountUpdateComponent } from './pages/customer-billing-account-update/customer-billing-account-update.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { PhoneMaskDirective } from './directives/phone-mask.directive';
     OfferSelectionComponent,
     AddCustomerAddressComponent,
     PhoneMaskDirective,
+    CustomerBillingAccountUpdateComponent,
   ],
   imports: [
     CommonModule,

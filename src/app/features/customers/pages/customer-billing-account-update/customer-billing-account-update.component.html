@@ -9,11 +9,11 @@
       </div>
     </div>
   </div>
-  <app-main-layout [layoutTitle]="'Create Customer'">
+  <app-main-layout [layoutTitle]="'Update Customer'">
     <div class="e-customer-content mb-5 container-fluid">
       <form *ngIf="accountForm" [formGroup]="accountForm">
         <div class="row">
-          <h5 class="mt-3">Create Billing Account</h5>
+          <h5 class="mt-3">Update Billing Account</h5>
           <div class="col-12">
             <div class="row e-customer-input">
               <div
@@ -55,7 +55,6 @@
               >
                 <textarea
                   class="e-address-desc"
-                  placeholder=""
                   formControlName="description"
                   [ngClass]="{
                     'invalid-input':
@@ -135,7 +134,7 @@
               </button>
             </div>
             <div class="col-12 col-lg-5 d-flex justify-content-lg-end">
-              <button etiyaButton="clear" (click)="add()">Create</button>
+              <button etiyaButton="clear" (click)="update()">Create</button>
             </div>
           </div>
         </div>
@@ -271,7 +270,7 @@
                 class="col-12 col-lg-5 d-flex justify-content-lg-end"
                 style="margin-left: 72px"
               >
-                <button etiyaButton="clear" (click)="addAddress()">NEXT</button>
+                <button etiyaButton="clear" (click)="addAddress()">SAVE</button>
               </div>
             </div>
           </div>

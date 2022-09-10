@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { CityService } from 'src/app/features/city/services/city/city.service';
-import { City } from '../../../models/city';
-import { CustomersService } from '../../../services/customer/customers.service';
-import { Address } from '../../../models/address';
-import { Customer } from '../../../models/customer';
-import { BillingAccount } from '../../../models/billingAccount';
 import { MessageService } from 'primeng/api';
+import { CityService } from 'src/app/features/city/services/city/city.service';
+import { Address } from '../../models/address';
+import { BillingAccount } from '../../models/billingAccount';
+import { City } from '../../models/city';
+import { Customer } from '../../models/customer';
+import { CustomersService } from '../../services/customer/customers.service';
 
 @Component({
-  templateUrl: './customer-billing-account.component.html',
-  styleUrls: ['./customer-billing-account.component.css'],
+  templateUrl: './customer-billing-account-update.component.html',
+  styleUrls: ['./customer-billing-account-update.component.css'],
 })
-export class CustomerBillingAccountComponent implements OnInit {
+export class CustomerBillingAccountUpdateComponent implements OnInit {
   accountForm!: FormGroup;
   addressForm!: FormGroup;
   isShown: boolean = false;
@@ -21,9 +21,10 @@ export class CustomerBillingAccountComponent implements OnInit {
   isEmpty: boolean = false;
   cityList!: City[];
   selectedCustomerId!: number;
+  selectedBillingId!: number;
   customer!: Customer;
-  billingAccount!: BillingAccount;
   billingAdress: Address[] = [];
+  billingAccount!: BillingAccount | undefined;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -57,6 +58,8 @@ export class CustomerBillingAccountComponent implements OnInit {
   getParams() {
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) this.selectedCustomerId = Number(params['id']);
+      if (params['billingId'])
+        this.selectedBillingId = Number(params['billingId']);
       this.getCustomerById();
     });
   }
@@ -69,20 +72,28 @@ export class CustomerBillingAccountComponent implements OnInit {
         .getCustomerById(this.selectedCustomerId)
         .subscribe((data) => {
           this.customer = data;
-          this.createAddressForm();
-          this.createAccountForm();
+          this.billingAccount = data.billingAccounts?.find((data) => {
+            return data.id == this.selectedBillingId;
+          });
+          if (this.billingAccount) {
+            this.billingAccount.addresses.forEach((data) => {
+              this.billingAdress.push(data);
+            });
+          }
+          this.createUpdateAddressForm();
+          this.createUpdateAccountForm();
         });
     }
   }
 
-  createAccountForm() {
+  createUpdateAccountForm() {
     this.accountForm = this.formBuilder.group({
-      accountName: ['', Validators.required],
-      description: ['', Validators.required],
+      accountName: [this.billingAccount?.accountName, Validators.required],
+      description: [this.billingAccount?.description, Validators.required],
     });
   }
 
-  createAddressForm() {
+  createUpdateAddressForm() {
     this.addressForm = this.formBuilder.group({
       id: [Math.floor(Math.random() * 1000)],
       city: ['', Validators.required],
@@ -94,7 +105,7 @@ export class CustomerBillingAccountComponent implements OnInit {
 
   addNewAddressBtn() {
     this.isShown = true;
-    this.createAddressForm();
+    this.createUpdateAddressForm();
   }
 
   getCityList() {
@@ -121,23 +132,27 @@ export class CustomerBillingAccountComponent implements OnInit {
     }
   }
 
-  add() {
+  update() {
     if (this.accountForm.valid) {
       this.isEmpty = false;
-      this.billingAccount = this.accountForm.value;
-      this.billingAccount.addresses = this.billingAdress;
-      this.billingAccount.status = 'active';
-      this.billingAccount.accountNumber = String(
-        Math.floor(Math.random() * 1000000000)
-      );
-      console.log(this.billingAccount);
-      this.customerService
-        .addBillingAccount(this.billingAccount, this.customer)
-        .subscribe();
-      this.router.navigateByUrl(
-        '/dashboard/customers/customer-billing-account-detail/' +
-          this.selectedCustomerId
-      );
+      const billinAccountToUpdate: BillingAccount = {
+        ...this.accountForm.value,
+        id: this.selectedBillingId,
+        addresses: this.billingAdress,
+        orders: this.billingAccount?.orders,
+        status: this.billingAccount?.status,
+        accountNumber: this.billingAccount?.accountNumber,
+      };
+      if (this.billingAccount) {
+        this.customerService
+          .updateBillingAccount(billinAccountToUpdate, this.customer)
+          .subscribe(() => {
+            this.router.navigateByUrl(
+              '/dashboard/customers/customer-billing-account-detail/' +
+                this.selectedCustomerId
+            );
+          });
+      }
     } else {
       this.isEmpty = true;
       this.isValid = false;
