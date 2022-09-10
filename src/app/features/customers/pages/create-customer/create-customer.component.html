@@ -115,18 +115,25 @@
                   />
                 </div>
                 <small
-                  *ngIf="futureDate"
+                  *ngIf="futureDate && !over120 && !under18"
                   class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-left: 220px; margin-top: -20px"
+                  style="color: red; margin-left: 375px; margin-top: -20px"
                 >
                   Please enter a valid date of birth
                 </small>
                 <small
-                  *ngIf="under18"
+                  *ngIf="under18 && !over120 && !futureDate"
                   class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-left: 220px; margin-top: -20px"
+                  style="color: red; margin-left: 376px; margin-top: -20px"
                 >
                   The customer cannot be under the age of 18.
+                </small>
+                <small
+                  *ngIf="over120 && !under18 && !futureDate"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 376px; margin-top: -20px"
+                >
+                  Please enter a valid date of birth
                 </small>
               </div>
             </div>
