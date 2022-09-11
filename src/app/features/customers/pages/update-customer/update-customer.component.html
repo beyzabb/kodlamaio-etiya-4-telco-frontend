@@ -107,31 +107,26 @@
                     }"
                   />
                 </div>
-                <!-- <small
-                  *ngIf="
-                    isShow &&
-                    updateCustomerForm.controls['birthDate'].errors &&
-                    !futureDate &&
-                    !under18
-                  "
-                  class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-left: 220px; margin-top: -20px"
-                >
-                  compulsory fields must be filled.
-                </small> -->
                 <small
-                  *ngIf="futureDate"
+                  *ngIf="futureDate && !over120 && !under18"
                   class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-left: 220px; margin-top: -20px"
+                  style="color: red; margin-left: 222px; margin-top: -20px"
                 >
                   Please enter a valid date of birth
                 </small>
                 <small
-                  *ngIf="under18"
+                  *ngIf="under18 && !over120 && !futureDate"
                   class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-left: 220px; margin-top: -20px"
+                  style="color: red; margin-left: 222px; margin-top: -20px"
                 >
                   The customer cannot be under the age of 18.
+                </small>
+                <small
+                  *ngIf="over120 && !under18 && !futureDate"
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-left: 222px; margin-top: -20px"
+                >
+                  Please enter a valid date of birth
                 </small>
               </div>
               <div class="col-6">
@@ -191,7 +186,7 @@
                   <label class="col-5" for="nationalId">Nationality ID:</label>
                   <input
                     class="col-7"
-                    type="text"
+                    type="number"
                     etiyaInput="dark"
                     formControlName="nationalityId"
                     onKeyPress="if(this.value.length==11) return false;"
@@ -211,7 +206,7 @@
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-left: 218px; margin-top: -20px"
                 >
-                  compulsory fields must be filled.
+                  TCKN is incorrect, please check the entered value.
                 </small>
                 <small
                   *ngIf="nationalityId"

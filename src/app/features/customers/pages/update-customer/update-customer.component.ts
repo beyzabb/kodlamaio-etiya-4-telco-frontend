@@ -18,6 +18,7 @@ export class UpdateCustomerComponent implements OnInit {
   isShow: Boolean = false;
   nationalityId: Boolean = false;
   under18: Boolean = false;
+  over120: Boolean = false;
   futureDate: Boolean = false;
   today: Date = new Date();
   constructor(
@@ -117,23 +118,48 @@ export class UpdateCustomerComponent implements OnInit {
   checkInvalid() {
     if (this.updateCustomerForm.invalid) {
       this.isShow = true;
-      return;
-    }
-    let date = new Date(this.updateCustomerForm.get('birthDate')?.value);
-    let age = this.today.getFullYear() - date.getFullYear();
-    if (age < 18) {
-      this.under18 = true;
-      return;
+      let date = new Date(this.updateCustomerForm.get('birthDate')?.value);
+      let age = this.today.getFullYear() - date.getFullYear();
+      console.log(age);
+      if (age > 120) {
+        this.over120 = true;
+        return;
+      } else {
+        this.over120 = false;
+      }
+      if (age < 18) {
+        this.under18 = true;
+        return;
+      } else {
+        this.under18 = false;
+      }
     } else {
-      this.under18 = false;
-    }
-    if (
-      this.updateCustomerForm.value.nationalityId ===
-      this.customer.nationalityId
-    ) {
-      this.updateCustomer();
-    } else {
-      this.checkTcNum(this.updateCustomerForm.value.nationalityId);
+      let date = new Date(this.updateCustomerForm.get('birthDate')?.value);
+      let age = this.today.getFullYear() - date.getFullYear();
+      if (age > 120) {
+        this.over120 = true;
+        this.under18 = false;
+        this.futureDate = false;
+        return;
+      } else {
+        this.over120 = false;
+      }
+      if (age < 18) {
+        this.under18 = true;
+        this.futureDate = false;
+        this.over120 = false;
+        return;
+      } else {
+        this.under18 = false;
+      }
+      if (
+        this.updateCustomerForm.value.nationalityId ===
+        this.customer.nationalityId
+      ) {
+        this.updateCustomer();
+      } else {
+        this.checkTcNum(this.updateCustomerForm.value.nationalityId);
+      }
     }
   }
   checkTcNum(id: number) {
@@ -143,6 +169,9 @@ export class UpdateCustomerComponent implements OnInit {
       });
       if (matchCustomer) {
         this.nationalityId = true;
+        if (matchCustomer == '00000000000') {
+          this.nationalityId = true;
+        }
       } else {
         this.updateCustomer();
         this.nationalityId = false;
