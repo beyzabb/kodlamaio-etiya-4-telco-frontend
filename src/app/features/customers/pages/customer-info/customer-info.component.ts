@@ -69,7 +69,7 @@ export class CustomerInfoComponent implements OnInit {
       key: 'c',
       sticky: true,
       severity: 'warn',
-      detail: 'Your changes could not be saved. Are you sure?',
+      detail: 'Are you sure you want to delete to customer?',
     });
   }
 
