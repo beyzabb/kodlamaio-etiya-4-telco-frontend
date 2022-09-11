@@ -13,7 +13,9 @@ import { CustomersService } from '../../services/customer/customers.service';
 export class AddContactMediumComponent implements OnInit {
   contactForm!: FormGroup;
   customer!: Customer;
-  isShow!: boolean;
+  isShow!: Boolean;
+  isFax!: Boolean;
+  isPhoneNumber!: Boolean;
   constructor(
     private customersService: CustomersService,
     private router: Router,
@@ -31,14 +33,24 @@ export class AddContactMediumComponent implements OnInit {
     this.contactForm = this.formBuilder.group({
       email: [
         this.customer.contactMedium?.email,
-        [Validators.email, Validators.required],
+        [
+          Validators.email,
+          Validators.required,
+          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
+        ],
       ],
-      homePhone: [this.customer.contactMedium?.homePhone],
+      homePhone: [
+        this.customer.contactMedium?.homePhone,
+        [Validators.pattern('^[0-9]{12}$')],
+      ],
       mobilePhone: [
         this.customer.contactMedium?.mobilePhone,
-        Validators.required,
+        [Validators.pattern('^[0-9]{12}$'), Validators.required],
       ],
-      fax: [this.customer.contactMedium?.fax],
+      fax: [
+        this.customer.contactMedium?.fax,
+        [Validators.pattern('^[0-9]{7}$')],
+      ],
     });
   }
 
@@ -53,6 +65,9 @@ export class AddContactMediumComponent implements OnInit {
 
   saveCustomer() {
     if (this.contactForm.valid) {
+      this.isShow = false;
+      this.isFax = false;
+      this.isPhoneNumber = false;
       this.saveContactMediumToStore();
       this.customersService.add(this.customer).subscribe({
         next: (data) => {
@@ -74,7 +89,15 @@ export class AddContactMediumComponent implements OnInit {
         },
       });
     } else {
-      this.isShow = true;
+      if (this.contactForm.get('mobilePhone')?.value) {
+        this.isPhoneNumber = true;
+        this.isShow = true;
+        this.isFax = false;
+      } else {
+        this.isPhoneNumber = false;
+        this.isShow = true;
+        this.isFax = true;
+      }
     }
   }
   isNumber(event: any): boolean {

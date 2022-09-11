@@ -35,13 +35,10 @@
 
       <label class="e-label">ACCOUNT NUMBER</label>
       <input
-        type="number"
+        type="text"
         etiyaInput="dark"
         formControlName="accountNumber"
-        max="9999999999"
-        min="1"
-        (keypress)="isNumber($event)"
-        onKeyPress="if(this.value.length==10) return false;"
+        maxlength="10"
         #accountNumber
       />
 
@@ -49,7 +46,6 @@
       <input
         type="text"
         appPhoneMask2
-        onKeyPress="if(this.value.length==16) return false;"
         etiyaInput="dark"
         class="e-contact-input"
         formControlName="gsmNumber"
@@ -74,11 +70,7 @@
 
       <label class="e-label">ORDER NUMBER</label>
       <input
-        (keypress)="isNumber($event)"
-        onKeyPress="if(this.value.length==11) return false;"
-        max="9999999999"
-        type="number"
-        min="1"
+        type="text"
         etiyaInput="dark"
         formControlName="orderNumber"
         #orderNumber

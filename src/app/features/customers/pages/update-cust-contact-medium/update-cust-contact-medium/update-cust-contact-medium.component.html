@@ -62,8 +62,23 @@
                     etiyaInput="dark"
                     appPhoneMask
                     formControlName="homePhone"
+                    [ngClass]="{
+                      'invalid-input':
+                        isShow &&
+                        updateCustomerContactForm.controls['homePhone'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="
+                    isShow &&
+                    updateCustomerContactForm.controls['homePhone'].errors
+                  "
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-top: 11px; margin-left: 400px"
+                >
+                  You entered missing value.
+                </small>
               </div>
 
               <div class="col-6">
@@ -77,19 +92,35 @@
                     formControlName="mobilePhone"
                     [ngClass]="{
                       'invalid-input':
-                        isShow &&
-                        updateCustomerContactForm.controls['mobilePhone'].errors
+                        (isShow &&
+                          updateCustomerContactForm.controls['mobilePhone']
+                            .errors &&
+                          !isPhoneNumber) ||
+                        (isShow && isPhoneNumber)
                     }"
                   />
                 </div>
                 <small
                   *ngIf="
-                    isShow && updateCustomerContactForm.controls['email'].errors
+                    isShow &&
+                    updateCustomerContactForm.controls['mobilePhone'].errors &&
+                    !isPhoneNumber
                   "
                   class="p-error block ng-invalid ng-dirty"
-                  style="color: red"
+                  style="color: red; margin-top: 11px; margin-left: 400px"
                 >
                   compulsory fields must be filled.
+                </small>
+                <small
+                  *ngIf="
+                    isPhoneNumber &&
+                    isShow &&
+                    updateCustomerContactForm.controls['mobilePhone'].errors
+                  "
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-top: 11px; margin-left: 400px"
+                >
+                  You entered a missing number
                 </small>
               </div>
               <div class="col-6">
@@ -100,8 +131,25 @@
                     type="text"
                     etiyaInput="dark"
                     formControlName="fax"
+                    [ngClass]="{
+                      'invalid-input':
+                        isFax &&
+                        isShow &&
+                        updateCustomerContactForm.controls['fax'].errors
+                    }"
                   />
                 </div>
+                <small
+                  *ngIf="
+                    isFax &&
+                    isShow &&
+                    updateCustomerContactForm.controls['fax'].errors
+                  "
+                  class="p-error block ng-invalid ng-dirty"
+                  style="color: red; margin-top: 11px; margin-left: 400px"
+                >
+                  Please check the entered value.
+                </small>
               </div>
             </div>
           </div>
