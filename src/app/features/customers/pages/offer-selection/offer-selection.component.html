@@ -105,7 +105,10 @@
                 <div class="e-dropdown">
                   <select etiyaInput="dark" formControlName="selectedId">
                     <option selected disabled hidden value="">Select</option>
-                    <option *ngFor="let campaign of campaignList">
+                    <option
+                      *ngFor="let campaign of campaignList"
+                      value="{{ campaign.id }}"
+                    >
                       {{ campaign.name }}
                     </option>
                   </select>
@@ -192,7 +195,11 @@
       </div>
       <div class="row e-buttons">
         <div class="col-8 d-flex justify-content-end align-items-center">
-          <button etiyaButton="accordion-body" (click)="saveBasket()">
+          <button
+            etiyaButton="accordion-body"
+            (click)="saveBasket()"
+            [disabled]="offerList.length === 0"
+          >
             Add Basket
           </button>
         </div>
@@ -205,6 +212,7 @@
               '/configuration-product/' +
               billingAccountId
             "
+            [disabled]="aaa && offerList.length == 0"
           >
             NEXT
           </button>

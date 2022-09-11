@@ -1,12 +1,8 @@
-::ng-deep p {
-  color: red;
-}
-
 :host ::ng-deep .pi {
   display: none;
 }
 :host ::ng-deep .p-toast-center {
-  width: 20rem;
+  width: 45rem;
 }
 :host ::ng-deep .p-toast .p-toast-message.p-toast-message-warn {
   background: #fff;
@@ -43,7 +39,7 @@
 }
 
 :host ::ng-deep .p-toast .p-toast-message .p-toast-message-content {
-  padding: 2rem 2rem 0;
+  padding: 2rem 15rem 0;
 }
 
 :host ::ng-deep .p-toast-message-content {

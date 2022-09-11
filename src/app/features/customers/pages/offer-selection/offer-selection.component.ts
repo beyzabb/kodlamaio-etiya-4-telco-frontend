@@ -23,6 +23,7 @@ export class OfferSelectionComponent implements OnInit {
   searchCatalogForm!: FormGroup;
   selectedCustomerId!: number;
   billingAccountId!: number;
+  aaa: Boolean = true;
 
   constructor(
     private offerService: OfferService,
@@ -65,6 +66,7 @@ export class OfferSelectionComponent implements OnInit {
     this.offerList.push(offer);
   }
   saveBasket() {
+    this.aaa = false;
     this.offerList.forEach((offer) => {
       this.offerService.addOfferToBasketStore(offer);
     });

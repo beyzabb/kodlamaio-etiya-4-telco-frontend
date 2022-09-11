@@ -55,17 +55,20 @@ export class CustomersService {
           );
         }
         if (searchCustomer.accountNumber) {
+          console.log(searchCustomer.accountNumber);
           filteredCustomers = filteredCustomers.filter((item) =>
-            item.billingAccounts!.find(
-              (ba) => ba.accountNumber == searchCustomer.accountNumber
+            item.billingAccounts?.find((ba) =>
+              ba.accountNumber.includes(searchCustomer.accountNumber)
             )
           );
         }
 
         if (searchCustomer.gsmNumber) {
-          filteredCustomers = filteredCustomers.filter(
-            (item) =>
-              item.contactMedium!.mobilePhone == searchCustomer.gsmNumber
+          console.log(searchCustomer.gsmNumber);
+          filteredCustomers = filteredCustomers.filter((item) =>
+            item
+              .contactMedium!.mobilePhone.toString()
+              .includes(searchCustomer.gsmNumber.toString())
           );
         }
 
@@ -263,6 +266,45 @@ export class CustomersService {
       ],
     };
     console.log(newCustomer);
+    return this.httpClient.put<Customer>(
+      `${this.apiControllerUrl}/${customer.id}`,
+      newCustomer
+    );
+  }
+
+  removeBillingAccount(
+    billingAccountToDelete: BillingAccount,
+    customer: Customer
+  ): Observable<Customer> {
+    const newCustomer: Customer = {
+      ...customer,
+    };
+    const newBillingAccount = customer.billingAccounts?.filter(
+      (bill) => bill.id != billingAccountToDelete.id
+    );
+    newCustomer.billingAccounts = newBillingAccount;
+
+    return this.httpClient.put<Customer>(
+      `${this.apiControllerUrl}/${customer.id}`,
+      newCustomer
+    );
+  }
+
+  updateBillingAccount(
+    billingAccountToUpdate: BillingAccount,
+    customer: Customer
+  ): Observable<Customer> {
+    console.log(billingAccountToUpdate.id);
+    const newCustomer: Customer = {
+      ...customer,
+    };
+    const newBillingAccount = customer.billingAccounts?.findIndex(
+      (billing) => billing.id === billingAccountToUpdate.id
+    ) as number;
+    if (newCustomer.billingAccounts) {
+      newCustomer.billingAccounts![newBillingAccount] = billingAccountToUpdate;
+    }
+
     return this.httpClient.put<Customer>(
       `${this.apiControllerUrl}/${customer.id}`,
       newCustomer

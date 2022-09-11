@@ -24,7 +24,12 @@
       </div>
     </div>
     <div class="row d-flex align-items-center justify-content-center">
-      <button etiyaButton="clear" class="col-3 mt-2" (click)="clear()">
+      <button
+        etiyaButton="clear"
+        class="col-3 mt-2"
+        [disabled]="basket.length == 0"
+        (click)="clear()"
+      >
         Clear
       </button>
     </div>

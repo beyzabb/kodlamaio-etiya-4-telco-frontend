@@ -19,6 +19,8 @@ export class UpdateCustContactMediumComponent implements OnInit {
   selectedCustomerId!: number;
   customer!: Customer;
   isShow: Boolean = false;
+  isFax!: Boolean;
+  isPhoneNumber!: Boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -49,10 +51,13 @@ export class UpdateCustContactMediumComponent implements OnInit {
         this.customer.contactMedium?.email,
         [Validators.email, Validators.required],
       ],
-      homePhone: [this.customer.contactMedium?.homePhone, Validators.required],
+      homePhone: [
+        this.customer.contactMedium?.homePhone,
+        [Validators.pattern('^[0-9]{12}$')],
+      ],
       mobilePhone: [
         this.customer.contactMedium?.mobilePhone,
-        Validators.required,
+        [Validators.pattern('^[0-9]{12}$'), Validators.required],
       ],
       fax: [this.customer.contactMedium?.fax, Validators.required],
     });
@@ -80,23 +85,36 @@ export class UpdateCustContactMediumComponent implements OnInit {
   }
   update() {
     if (this.updateCustomerContactForm.invalid) {
-      this.isShow = true;
-      return;
-    }
-    this.isShow = false;
-    this.customersService
-      .updateContactMedium(this.updateCustomerContactForm.value, this.customer)
-      .subscribe(() => {
-        this.router.navigateByUrl(
-          `/dashboard/customers/customer-contact-medium/${this.customer.id}`
-        );
-        this.messageService.add({
-          detail: 'Sucsessfully updated',
-          severity: 'success',
-          summary: 'Update',
-          key: 'etiya-custom',
+      if (this.updateCustomerContactForm.get('mobilePhone')?.value) {
+        this.isPhoneNumber = true;
+        this.isShow = true;
+        this.isFax = false;
+      } else {
+        this.isPhoneNumber = false;
+        this.isShow = true;
+        this.isFax = true;
+      }
+    } else {
+      this.isShow = false;
+      this.isFax = false;
+      this.isPhoneNumber = false;
+      this.customersService
+        .updateContactMedium(
+          this.updateCustomerContactForm.value,
+          this.customer
+        )
+        .subscribe(() => {
+          this.router.navigateByUrl(
+            `/dashboard/customers/customer-contact-medium/${this.customer.id}`
+          );
+          this.messageService.add({
+            detail: 'Sucsessfully updated',
+            severity: 'success',
+            summary: 'Update',
+            key: 'etiya-custom',
+          });
         });
-      });
+    }
   }
   cancelChanges() {
     this.messageService.add({
