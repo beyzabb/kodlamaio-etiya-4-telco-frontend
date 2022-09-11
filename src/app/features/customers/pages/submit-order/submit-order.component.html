@@ -35,7 +35,11 @@
         <label class="e-frame-label">Service Address:</label>
       </div>
       <div class="col-8">
-        <label class="e-frame-label">{{ order.address?.description }}</label>
+        <label class="e-frame-label"
+          >{{ order.address?.city?.name }},{{ order.address?.street }},{{
+            order.address?.flatNumber
+          }}, {{ order.address?.description }}</label
+        >
       </div>
     </div>
     <div class="row">
