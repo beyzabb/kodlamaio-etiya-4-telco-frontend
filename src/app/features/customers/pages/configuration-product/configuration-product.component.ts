@@ -1,12 +1,16 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 import { of } from 'rxjs';
+import { CityService } from 'src/app/features/city/services/city/city.service';
 import { Offer } from 'src/app/features/offers/models/offer';
 import { OfferService } from 'src/app/features/offers/services/offer/offer.service';
 import { OrderService } from 'src/app/features/orders/services/order/order.service';
 import { ProductConfigDto } from 'src/app/features/products/models/productConfigDto';
 import { Address } from '../../models/address';
 import { BillingAccount } from '../../models/billingAccount';
+import { City } from '../../models/city';
 import { Customer } from '../../models/customer';
 import { Product } from '../../models/product';
 import { CustomersService } from '../../services/customer/customers.service';
@@ -24,16 +28,85 @@ export class ConfigurationProductComponent implements OnInit {
   billingAccountList!: BillingAccount[];
   billingAdress: Address[] = [];
 
+  addressForm!: FormGroup;
+  isShown: Boolean = false;
+  isValid: boolean = false;
+  isEmpty: boolean = false;
+  cityList!: City[];
+
   constructor(
     private offerService: OfferService,
     private activatedRoute: ActivatedRoute,
     private customersService: CustomersService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private cityService: CityService,
+    private messageService: MessageService
   ) {}
 
   ngOnInit(): void {
     this.getParams();
     this.listenBasket();
+    this.getCityList();
+    this.messageService.clearObserver.subscribe((data) => {
+      if (data == 'r') {
+        this.messageService.clear();
+      } else if (data == 'c') {
+        this.messageService.clear();
+        if (this.isShown == true) {
+          this.isShown = false;
+        }
+      }
+    });
+  }
+
+  createUpdateAddressForm() {
+    this.addressForm = this.formBuilder.group({
+      id: [Math.floor(Math.random() * 1000)],
+      city: ['', Validators.required],
+      street: ['', Validators.required],
+      flatNumber: ['', Validators.required],
+      description: ['', Validators.required],
+    });
+  }
+
+  addNewAddressBtn() {
+    this.isShown = true;
+    this.createUpdateAddressForm();
+  }
+
+  getCityList() {
+    this.cityService.getList().subscribe((data) => {
+      this.cityList = data;
+    });
+  }
+
+  addAddress() {
+    if (this.addressForm.valid) {
+      this.isValid = false;
+      const addressToAdd: Address = {
+        ...this.addressForm.value,
+        city: this.cityList.find(
+          (city) => city.id == this.addressForm.value.city.id
+        ),
+      };
+      this.billingAdress.push(addressToAdd);
+      console.log(this.billingAdress);
+      this.isShown = false;
+    } else {
+      this.isValid = true;
+      this.isEmpty = false;
+    }
+  }
+
+  cancelChanges() {
+    this.messageService.add({
+      key: 'c',
+      sticky: true,
+      severity: 'warn',
+      detail: 'Your changes could not be saved. Are you sure?',
+    });
   }
 
   listenBasket() {
