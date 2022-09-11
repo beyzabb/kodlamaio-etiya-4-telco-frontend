@@ -97,7 +97,6 @@ export class CreateCustomerComponent implements OnInit {
         this.over120 = true;
         this.under18 = false;
         this.futureDate = false;
-        return;
       } else {
         this.over120 = false;
       }
@@ -105,7 +104,6 @@ export class CreateCustomerComponent implements OnInit {
         this.under18 = true;
         this.futureDate = false;
         this.over120 = false;
-        return;
       } else {
         this.under18 = false;
       }
@@ -118,13 +116,11 @@ export class CreateCustomerComponent implements OnInit {
       console.log(age);
       if (age > 120) {
         this.over120 = true;
-        return;
       } else {
         this.over120 = false;
       }
       if (age < 18) {
         this.under18 = true;
-        return;
       } else {
         this.under18 = false;
       }
