@@ -63,3 +63,9 @@ input::placeholder {
   color: red !important;
   border-color: red !important;
 }
+.e-btn-edit:hover {
+  background-color: #f58220 !important;
+}
+.e-btn-remove:hover {
+  background-color: #f58220 !important;
+}

@@ -21,9 +21,13 @@ export class CustomerBillingAccountComponent implements OnInit {
   isEmpty: boolean = false;
   cityList!: City[];
   selectedCustomerId!: number;
+  selectedAddressId!: number;
+  addressToUpdate!: any;
+  addressToDelete!: Address;
   customer!: Customer;
   billingAccount!: BillingAccount;
   billingAdress: Address[] = [];
+  newAddress!: Address[];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -85,15 +89,22 @@ export class CustomerBillingAccountComponent implements OnInit {
   createAddressForm() {
     this.addressForm = this.formBuilder.group({
       id: [Math.floor(Math.random() * 1000)],
-      city: ['', Validators.required],
-      street: ['', Validators.required],
-      flatNumber: ['', Validators.required],
-      description: ['', Validators.required],
+      city: [
+        this.addressToUpdate?.city?.id || 0,
+        [Validators.required, Validators.min(1)],
+      ],
+      street: [this.addressToUpdate?.street || '', Validators.required],
+      flatNumber: [this.addressToUpdate?.flatNumber || '', Validators.required],
+      description: [
+        this.addressToUpdate?.description || '',
+        Validators.required,
+      ],
     });
   }
 
   addNewAddressBtn() {
     this.isShown = true;
+    this.addressForm.value.clear();
     this.createAddressForm();
   }
 
@@ -109,11 +120,12 @@ export class CustomerBillingAccountComponent implements OnInit {
       const addressToAdd: Address = {
         ...this.addressForm.value,
         city: this.cityList.find(
-          (city) => city.id == this.addressForm.value.city.id
+          (city) => city.id == this.addressForm.value.city
         ),
       };
       this.billingAdress.push(addressToAdd);
       console.log(this.billingAdress);
+
       this.isShown = false;
     } else {
       this.isValid = true;
@@ -159,5 +171,62 @@ export class CustomerBillingAccountComponent implements OnInit {
       severity: 'warn',
       detail: 'Your changes could not be saved. Are you sure?',
     });
+  }
+  selectAddressId(addressId: number) {
+    this.isShown = true;
+    this.selectedAddressId = addressId;
+    this.addressToUpdate = this.billingAdress.find(
+      (bill) => bill.id == addressId
+    );
+    console.warn(this.addressToUpdate);
+    this.createAddressForm();
+  }
+
+  saveAddress() {
+    if (this.selectedAddressId) {
+      this.updateAddress();
+    } else {
+      this.addAddress();
+    }
+  }
+
+  updateAddress() {
+    const addressIndex = this.billingAdress.findIndex((b) => {
+      return b.id == this.addressToUpdate.id;
+    });
+
+    const addressToUpdate: Address = {
+      ...this.addressForm.value,
+      id: this.selectedAddressId,
+      city: this.cityList.find(
+        (city) => city.id == this.addressForm.value.city
+      ),
+    };
+
+    console.warn(this.addressForm.value);
+    this.billingAdress![addressIndex] = addressToUpdate;
+    this.isShown = false;
+  }
+
+  removePopup(address: Address) {
+    // if (this.billingAdress && this.billingAdress?.length <= 1) {
+    //   this.displayBasic = true;
+    //   return;
+    // }
+    this.addressToDelete = this.newAddress.find((adr) => {
+      return adr.id == address.id;
+    }) as Address;
+    this.messageService.add({
+      key: 'c',
+      sticky: true,
+      severity: 'warn',
+      detail: 'Are you sure to delete this address?',
+    });
+  }
+  remove() {
+    this.billingAdress = this.billingAdress.filter(
+      (b) => b.id != this.addressToDelete.id
+    );
+    this.messageService.clear('c');
   }
 }

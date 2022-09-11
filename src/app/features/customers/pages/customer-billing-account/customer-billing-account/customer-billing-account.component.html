@@ -106,8 +106,14 @@
                     <tr *ngFor="let billingadr of billingAdress">
                       <th style="display: flex">
                         <div>
-                          <button etiyaButton="edit"></button>
-                          <button etiyaButton="remove"></button>
+                          <button
+                            etiyaButton="edit"
+                            (click)="selectAddressId(billingadr.id)"
+                          ></button>
+                          <button
+                            etiyaButton="remove"
+                            (click)="removePopup(billingadr)"
+                          ></button>
                         </div>
                         <div style="margin-left: 50px">
                           {{ billingadr.city.name }}
@@ -160,10 +166,10 @@
                           isValid && addressForm.controls['city'].errors
                       }"
                     >
-                      <option selected disabled hidden value="">
+                      <option selected disabled hidden [value]="0">
                         Choose a city
                       </option>
-                      <option *ngFor="let city of cityList" [ngValue]="city">
+                      <option *ngFor="let city of cityList" [value]="city.id">
                         {{ city.name }}
                       </option>
                     </select>
@@ -271,7 +277,9 @@
                 class="col-12 col-lg-5 d-flex justify-content-lg-end"
                 style="margin-left: 72px"
               >
-                <button etiyaButton="clear" (click)="addAddress()">NEXT</button>
+                <button etiyaButton="clear" (click)="saveAddress()">
+                  NEXT
+                </button>
               </div>
             </div>
           </div>
