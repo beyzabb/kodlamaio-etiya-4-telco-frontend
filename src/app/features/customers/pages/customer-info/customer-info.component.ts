@@ -29,7 +29,7 @@ export class CustomerInfoComponent implements OnInit {
         this.messageService.clear();
       } else if (data == 'c') {
         let filteredData = this.customer.billingAccounts?.find((c) => {
-          return c.status === 'active';
+          return c.status == 'active';
         });
         if (filteredData) {
           this.messageService.add({
