@@ -193,15 +193,18 @@
                     (keypress)="isNumber($event)"
                     [ngClass]="{
                       'invalid-input':
-                        isShow &&
-                        updateCustomerForm.controls['nationalityId'].errors
+                        (isShow &&
+                          updateCustomerForm.controls['nationalityId']
+                            .errors) ||
+                        isNationalityId
                     }"
                   />
                 </div>
                 <small
                   *ngIf="
                     isShow &&
-                    updateCustomerForm.controls['nationalityId'].errors
+                    updateCustomerForm.controls['nationalityId'].errors &&
+                    !isNationalityId
                   "
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-left: 218px; margin-top: -20px"
@@ -209,7 +212,7 @@
                   TCKN is incorrect, please check the entered value.
                 </small>
                 <small
-                  *ngIf="nationalityId"
+                  *ngIf="isNationalityId && !isShow"
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-left: 218px; margin-top: -20px"
                 >

@@ -16,7 +16,7 @@ export class UpdateCustomerComponent implements OnInit {
   selectedCustomerId!: number;
   customer!: Customer;
   isShow: Boolean = false;
-  nationalityId: Boolean = false;
+  isNationalityId: Boolean = false;
   under18: Boolean = false;
   over120: Boolean = false;
   futureDate: Boolean = false;
@@ -168,13 +168,13 @@ export class UpdateCustomerComponent implements OnInit {
         return item.nationalityId == id;
       });
       if (matchCustomer) {
-        this.nationalityId = true;
+        this.isNationalityId = true;
         if (matchCustomer == '00000000000') {
-          this.nationalityId = true;
+          this.isNationalityId = true;
         }
       } else {
         this.updateCustomer();
-        this.nationalityId = false;
+        this.isNationalityId = false;
       }
     });
   }
