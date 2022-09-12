@@ -29,7 +29,7 @@
             <div class="row d-flex justify-space-between align-items-center">
               <div class="col-6">
                 <div class="form-group">
-                  <label class="col-5" for="email">Email:</label>
+                  <label class="col-5" for="email">Email* :</label>
                   <input
                     class="col-7"
                     type="text"
@@ -58,10 +58,11 @@
                   <label class="col-5" for="homePhone">Home Phone :</label>
                   <input
                     class="col-7"
-                    type="text "
+                    type="text"
                     etiyaInput="dark"
-                    appPhoneMask
                     formControlName="homePhone"
+                    mask="(000) 000-0000"
+                    max="10"
                     [ngClass]="{
                       'invalid-input':
                         isShow &&
@@ -75,7 +76,7 @@
                     updateCustomerContactForm.controls['homePhone'].errors
                   "
                   class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-top: 11px; margin-left: 400px"
+                  style="color: red"
                 >
                   You entered missing value.
                 </small>
@@ -83,42 +84,29 @@
 
               <div class="col-6">
                 <div class="form-group">
-                  <label class="col-5" for="mobilePhone">Mobile Phone :</label>
+                  <label class="col-5" for="mobilePhone">Mobile Phone* :</label>
                   <input
                     class="col-7"
-                    type="text "
+                    type="text"
                     etiyaInput="dark"
-                    appPhoneMask
+                    class="e-contact-input"
                     formControlName="mobilePhone"
+                    mask="(000) 000-0000"
+                    max="10"
                     [ngClass]="{
                       'invalid-input':
-                        (isShow &&
-                          updateCustomerContactForm.controls['mobilePhone']
-                            .errors &&
-                          !isPhoneNumber) ||
-                        (isShow && isPhoneNumber)
+                        isShow &&
+                        updateCustomerContactForm.controls['mobilePhone'].errors
                     }"
                   />
                 </div>
                 <small
                   *ngIf="
                     isShow &&
-                    updateCustomerContactForm.controls['mobilePhone'].errors &&
-                    !isPhoneNumber
-                  "
-                  class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-top: 11px; margin-left: 400px"
-                >
-                  compulsory fields must be filled.
-                </small>
-                <small
-                  *ngIf="
-                    isPhoneNumber &&
-                    isShow &&
                     updateCustomerContactForm.controls['mobilePhone'].errors
                   "
                   class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-top: 11px; margin-left: 400px"
+                  style="color: red"
                 >
                   You entered a missing number
                 </small>
@@ -131,9 +119,9 @@
                     type="text"
                     etiyaInput="dark"
                     formControlName="fax"
+                    onKeyPress="if(this.value.length==7) return false;"
                     [ngClass]="{
                       'invalid-input':
-                        isFax &&
                         isShow &&
                         updateCustomerContactForm.controls['fax'].errors
                     }"
@@ -141,12 +129,10 @@
                 </div>
                 <small
                   *ngIf="
-                    isFax &&
-                    isShow &&
-                    updateCustomerContactForm.controls['fax'].errors
+                    isShow && updateCustomerContactForm.controls['fax'].errors
                   "
                   class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-top: 11px; margin-left: 400px"
+                  style="color: red"
                 >
                   Please check the entered value.
                 </small>

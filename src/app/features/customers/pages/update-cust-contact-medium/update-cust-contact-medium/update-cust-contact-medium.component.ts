@@ -19,8 +19,6 @@ export class UpdateCustContactMediumComponent implements OnInit {
   selectedCustomerId!: number;
   customer!: Customer;
   isShow: Boolean = false;
-  isFax!: Boolean;
-  isPhoneNumber!: Boolean;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -53,13 +51,13 @@ export class UpdateCustContactMediumComponent implements OnInit {
       ],
       homePhone: [
         this.customer.contactMedium?.homePhone,
-        [Validators.pattern('^[0-9]{12}$')],
+        Validators.pattern('^[0-9]{10}$'),
       ],
       mobilePhone: [
         this.customer.contactMedium?.mobilePhone,
-        [Validators.pattern('^[0-9]{12}$'), Validators.required],
+        [Validators.required, Validators.pattern('^[0-9]{10}$')],
       ],
-      fax: [this.customer.contactMedium?.fax, Validators.required],
+      fax: [this.customer.contactMedium?.fax, Validators.pattern('^[0-9]{7}$')],
     });
   }
   getCustomerById() {
@@ -85,19 +83,9 @@ export class UpdateCustContactMediumComponent implements OnInit {
   }
   update() {
     if (this.updateCustomerContactForm.invalid) {
-      if (this.updateCustomerContactForm.get('mobilePhone')?.value) {
-        this.isPhoneNumber = true;
-        this.isShow = true;
-        this.isFax = false;
-      } else {
-        this.isPhoneNumber = false;
-        this.isShow = true;
-        this.isFax = true;
-      }
+      this.isShow = true;
     } else {
       this.isShow = false;
-      this.isFax = false;
-      this.isPhoneNumber = false;
       this.customersService
         .updateContactMedium(
           this.updateCustomerContactForm.value,
