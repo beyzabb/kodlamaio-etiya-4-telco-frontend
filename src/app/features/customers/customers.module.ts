@@ -22,6 +22,7 @@ import { OfferSelectionComponent } from './pages/offer-selection/offer-selection
 import { AddCustomerAddressComponent } from './pages/add-customer-address/add-customer-address.component';
 import { CityModule } from '../city/city.module';
 import { CustomerBillingAccountUpdateComponent } from './pages/customer-billing-account-update/customer-billing-account-update.component';
+import { CoreModule } from 'src/app/core/core.module';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { CustomerBillingAccountUpdateComponent } from './pages/customer-billing-
     ReactiveFormsModule,
     FormsModule,
     CityModule,
+    CoreModule,
   ],
 })
 export class CustomersModule {}

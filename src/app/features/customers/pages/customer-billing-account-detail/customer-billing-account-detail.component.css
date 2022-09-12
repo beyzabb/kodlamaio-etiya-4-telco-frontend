@@ -13,3 +13,28 @@
   border: 1px solid #f58220 !important;
   margin-top: 10px;
 }
+
+.pagenav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f78200;
+  border: none;
+}
+.pagenav .active {
+  background-color: transparent;
+  border: none;
+  color: #f78200 !important;
+}
+
+.pagenav li a {
+  background-color: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+.pagenav .page-item-button a {
+  background-color: transparent;
+  cursor: pointer;
+  color: #f78200 !important;
+}
