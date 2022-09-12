@@ -23,13 +23,10 @@
 
       <label class="e-label">CUSTOMER ID</label>
       <input
+        type="text"
         etiyaInput="dark"
         formControlName="customerId"
         (keypress)="isNumber($event)"
-        onKeyPress="if(this.value.length==11) return false;"
-        max="9999999999"
-        type="number"
-        min="1"
         #customerId
       />
 
@@ -46,7 +43,8 @@
       <input
         type="text"
         mask="(000) 000-0000"
-        maxlength="10"
+        placeholder="(5__) ___-____"
+        max="10"
         etiyaInput="dark"
         class="e-contact-input"
         formControlName="gsmNumber"

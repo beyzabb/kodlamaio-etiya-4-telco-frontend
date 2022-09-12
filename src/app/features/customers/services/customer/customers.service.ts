@@ -55,9 +55,8 @@ export class CustomersService {
           );
         }
         if (searchCustomer.accountNumber) {
-          console.log(searchCustomer.accountNumber);
           filteredCustomers = filteredCustomers.filter((item) =>
-            item.billingAccounts?.find((ba) =>
+            item.billingAccounts!.find((ba) =>
               ba.accountNumber.includes(searchCustomer.accountNumber)
             )
           );
