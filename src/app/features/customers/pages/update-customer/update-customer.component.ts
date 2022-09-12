@@ -168,7 +168,6 @@ export class UpdateCustomerComponent implements OnInit {
         return item.nationalityId == id;
       });
       if (matchCustomer) {
-        this.isNationalityId = true;
         if (matchCustomer == '00000000000') {
           this.isNationalityId = true;
         }
