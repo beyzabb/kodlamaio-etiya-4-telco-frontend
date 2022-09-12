@@ -21,13 +21,19 @@
           },
           "street": "Granby",
           "flatNumber": 6,
-          "description": "6128 Jay Alley"
+          "description": "6128 Jay Alley",
+          "isPrimary": false
         },
         {
-          "street": "",
-          "flatNumber": "",
-          "description": "",
-          "id": 9437
+          "id": 2,
+          "city": {
+            "id": 1,
+            "name": "Adana"
+          },
+          "street": "Oak Valley",
+          "flatNumber": 6,
+          "description": "6128 Jay Alley",
+          "isPrimary": true
         }
       ],
       "contactMedium": {
