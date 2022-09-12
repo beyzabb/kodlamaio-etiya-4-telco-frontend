@@ -64,4 +64,13 @@ export class CustomerBillingAccountDetailComponent implements OnInit {
 
     console.log(productsInPage);
   }
+
+  onBillingAccDelete(accToDelete: BillingAccount) {
+    this.billingAccountList = this.billingAccountList.filter(
+      (c) => c.id != accToDelete.id
+    );
+  }
+  onBillingAccUpdateStatus() {
+    this.getCustomerById();
+  }
 }

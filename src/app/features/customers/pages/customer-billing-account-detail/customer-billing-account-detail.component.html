@@ -37,6 +37,8 @@
         <app-table-accordion
           [billingAccount]="bill"
           [customerId]="selectedCustomerId"
+          (onBillingAccountDelete)="onBillingAccDelete($event)"
+          (onBillingAccountUpdateStatus)="onBillingAccUpdateStatus()"
         ></app-table-accordion>
       </ng-template>
       <nav class="pagenav">

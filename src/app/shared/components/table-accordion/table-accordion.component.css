@@ -47,15 +47,23 @@
   box-shadow: inset 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
+.accordion-button1 {
+  color: #ffffff;
+  box-sizing: border-box;
+
+  background: transparent;
+  border: none;
+}
+
 .accordion-button::after {
   display: none;
 }
 
-.accordion-button:not(.collapsed) {
+.accordion-button1:not(.collapsed) {
   color: #ffffff;
 }
 
-.accordion-button:not(.collapsed):first-child img:first-child {
+.accordion-button1:not(.collapsed) img:first-child {
   transform: rotate(180deg);
   color: #ffffff;
 }
@@ -64,11 +72,11 @@
   background-color: transparent;
 }
 
-.accordion-button img:first-child {
+.accordion-button1 img:first-child {
   transition: all 0.3s;
 }
 
-.accordion-button img {
+.accordion-button1 img {
   width: 1.8rem;
   height: 1.8rem;
   margin: 0 10px;
@@ -76,6 +84,7 @@
 
 .accordion-button img:hover {
   background-color: #f58220 !important;
+  cursor: pointer;
 }
 
 .e-accordion-text {
@@ -103,12 +112,4 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-}
-
-::ng-deep .warn-toast .p-toast .p-toast-message .p-toast-icon-close {
-  display: none;
-}
-
-::ng-deep .warn-toast .p-toast .p-toast-message .p-toast-icon-close:hover {
-  display: none;
 }

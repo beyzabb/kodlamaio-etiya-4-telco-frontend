@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BillingAccount } from 'src/app/features/customers/models/billingAccount';
 import { Offer } from 'src/app/features/offers/models/offer';
 import { MessageService } from 'primeng/api';
@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 export class TableAccordionComponent implements OnInit {
   @Input() billingAccount!: BillingAccount;
   @Input() customerId!: number;
+  @Output() onBillingAccountDelete = new EventEmitter<BillingAccount>();
+  @Output() onBillingAccountUpdateStatus = new EventEmitter<BillingAccount>();
   customer!: Customer;
   billingAccountToDelete!: BillingAccount;
   newAccount!: BillingAccount;
@@ -142,9 +144,7 @@ export class TableAccordionComponent implements OnInit {
     this.customerService
       .removeBillingAccount(this.billingAccountToDelete, this.customer)
       .subscribe((data) => {
-        setTimeout(() => {
-          window.location.reload();
-        }, 3000);
+        this.onBillingAccountDelete.emit(this.billingAccountToDelete);
       });
   }
 
@@ -174,7 +174,7 @@ export class TableAccordionComponent implements OnInit {
       this.customerService
         .updateBillingAccount(billinAccountToUpdate, this.customer)
         .subscribe(() => {
-          window.location.reload();
+          this.onBillingAccountUpdateStatus.emit();
         });
     }
   }
@@ -185,7 +185,7 @@ export class TableAccordionComponent implements OnInit {
       key: 'c',
       sticky: true,
       severity: 'warn',
-      detail: 'Your changes could not be saved. Are you sure?',
+      detail: 'Do you want to change status of this account?',
     });
   }
 }
