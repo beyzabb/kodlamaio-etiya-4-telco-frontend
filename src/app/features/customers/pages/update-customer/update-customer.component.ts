@@ -102,17 +102,19 @@ export class UpdateCustomerComponent implements OnInit {
         { id: this.customer.id },
         this.updateCustomerForm.value
       );
-      this.customerService.update(customer, this.customer).subscribe(() => {
-        this.router.navigateByUrl(
-          `/dashboard/customers/customer-info/${customer.id}`
-        );
-        this.messageService.add({
-          detail: 'Sucsessfully updated',
-          severity: 'success',
-          summary: 'Update',
-          key: 'etiya-custom',
+      this.customerService
+        .updateDemographicInfo(customer, this.customer)
+        .subscribe(() => {
+          this.router.navigateByUrl(
+            `/dashboard/customers/customer-info/${customer.id}`
+          );
+          this.messageService.add({
+            detail: 'Sucsessfully updated',
+            severity: 'success',
+            summary: 'Update',
+            key: 'etiya-custom',
+          });
         });
-      });
     }
   }
   checkInvalid() {
@@ -171,6 +173,7 @@ export class UpdateCustomerComponent implements OnInit {
         if (matchCustomer == '00000000000') {
           this.isNationalityId = true;
         }
+        this.isNationalityId = true;
       } else {
         this.updateCustomer();
         this.isNationalityId = false;
