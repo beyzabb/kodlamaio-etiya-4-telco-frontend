@@ -26,6 +26,7 @@
             <th class="col-2">Street Name</th>
             <th class="col-2">House/Flat Number</th>
             <th class="col-2">Address Description</th>
+            <th class="col-2">Action</th>
           </tr>
         </thead>
         <tbody class="table-body">
@@ -39,27 +40,49 @@
             <td>Null</td>
             <td>Null</td>
             <td>Null</td>
+            <td>Null</td>
           </tr>
           <ng-template #customerAddressList>
             <tr *ngFor="let adr of customerAddress">
-              <th style="display: flex">
-                <div>
-                  <button
-                    (click)="selectAddressId(adr.id)"
-                    etiyaButton="edit"
-                  ></button>
-                  <button
-                    (click)="removePopup(adr)"
-                    etiyaButton="remove"
-                  ></button>
-                </div>
-                <div style="margin-left: 65px">
-                  {{ adr.city.name }}
+              <th>
+                <div class="row">
+                  <div class="col-2 d-flex justify-content-end">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="flexRadioDefault"
+                      id="flexRadioDefault1"
+                      (change)="handleConfigInput($event)"
+                      value="{{ adr.id }}"
+                      [checked]="adr.isPrimary == true"
+                      [disabled]="
+                        adr.isPrimary == true &&
+                        this.customer.addresses &&
+                        this.customer.addresses.length <= 1
+                      "
+                    />
+                    <label class="form-check-label" for="flexRadioDefault1">
+                    </label>
+                  </div>
+                  <div class="col-10 e-city-name">
+                    {{ adr.city.name }}
+                  </div>
                 </div>
               </th>
               <td>{{ adr.street }}</td>
               <td>{{ adr.flatNumber }}</td>
               <td>{{ adr.description }}</td>
+              <td class="d-flex justify-content-center">
+                <button
+                  (click)="selectAddressId(adr.id)"
+                  etiyaButton="edit"
+                ></button>
+                <button
+                  (click)="removePopup(adr)"
+                  etiyaButton="remove"
+                  [disabled]="adr.isPrimary"
+                ></button>
+              </td>
             </tr>
           </ng-template>
         </tbody>

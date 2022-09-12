@@ -90,4 +90,18 @@ export class CustomerAddressComponent implements OnInit {
         this.getCustomerById();
       });
   }
+
+  handleConfigInput(event: any) {
+    this.customer.addresses = this.customer.addresses?.map((adr) => {
+      const newAddress = { ...adr, isPrimary: false };
+      return newAddress;
+    });
+    let findAddress = this.customer.addresses?.find((adr) => {
+      return adr.id == event.target.value;
+    });
+    findAddress!.isPrimary = true;
+    this.customerService.update(this.customer).subscribe((data) => {
+      this.getCustomerById();
+    });
+  }
 }
