@@ -23,7 +23,8 @@ export class OfferSelectionComponent implements OnInit {
   searchCatalogForm!: FormGroup;
   selectedCustomerId!: number;
   billingAccountId!: number;
-  aaa: Boolean = true;
+  isEmpty: Boolean = true;
+  itemsInBasket: boolean = false;
 
   constructor(
     private offerService: OfferService,
@@ -34,6 +35,9 @@ export class OfferSelectionComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.offerService.basket$.subscribe((data) => {
+      this.itemsInBasket = data.length > 0;
+    });
     this.getParams();
     this.getOfferList();
     this.listenBasket();
@@ -66,7 +70,7 @@ export class OfferSelectionComponent implements OnInit {
     this.offerList.push(offer);
   }
   saveBasket() {
-    this.aaa = false;
+    this.isEmpty = false;
     this.offerList.forEach((offer) => {
       this.offerService.addOfferToBasketStore(offer);
     });
@@ -134,5 +138,15 @@ export class OfferSelectionComponent implements OnInit {
       .subscribe((data) => {
         this.catalogOffersList = data;
       });
+  }
+
+  isNumber(event: any): boolean {
+    console.log(event.target.value);
+    const pattern = /[0-9]/;
+    const char = String.fromCharCode(event.which ? event.which : event.keyCode);
+    if (pattern.test(char)) return true;
+
+    event.preventDefault();
+    return false;
   }
 }
