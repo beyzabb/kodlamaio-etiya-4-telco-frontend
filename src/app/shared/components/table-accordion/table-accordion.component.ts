@@ -77,20 +77,30 @@ export class TableAccordionComponent implements OnInit {
         key: 'product-detail',
         sticky: true,
         severity: 'warn',
-        detail:
-          'Prod Offer Id: ' +
-          campaignProdOfferId +
-          '       ' +
-          'Prod Offer Name: ' +
-          campaignProdOfferName +
-          '       ' +
-          'Campaign Id: ' +
-          campaignId +
-          '       ' +
-          campaignAddressDetail.city.name +
-          '       ' +
-          campaignAddressDetail.description +
-          '       ',
+        detail: `
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table" >
+                        <tr class="table-header">
+                        <th class="col-2">Campaign ID</th>
+                            <th class="col-2">Product Offer ID</th>
+                            <th class="col-2">Product Offer Name</th>
+                            <th class="col-2">City</th>
+                            <th class="col-2">Address Detail</th>
+                        </tr>
+                        <tr  class="active">
+                            <td>${campaignId}</td>
+                            <td>${campaignProdOfferId}</td>
+                            <td>${campaignProdOfferName}</td>
+                            <td>${campaignAddressDetail.city.name}</td>
+                            <td>${campaignAddressDetail.description}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+      `,
       });
     } else if (offer.type.typeName == 'catalog') {
       let catalogProdOfferId = offer.id;
@@ -101,19 +111,28 @@ export class TableAccordionComponent implements OnInit {
         key: 'product-detail',
         sticky: true,
         severity: 'warn',
-        detail:
-          'ProdOfferId: ' +
-          catalogProdOfferId +
-          '         ' +
-          'ProdOfferName: ' +
-          catalogProdOfferName +
-          '          ' +
-          'Address Name: ' +
-          catalogAddressDetail.city.name +
-          '          ' +
-          'Address Description: ' +
-          catalogAddressDetail.description +
-          '          ',
+        detail: `
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <table class="table" >
+                        <tr class="table-header">
+                            <th class="col-2">Product Offer ID</th>
+                            <th class="col-2">Product Offer Name</th>
+                            <th class="col-2">City</th>
+                            <th class="col-2">Address Detail</th>
+                        </tr>
+                        <tr  class="active">
+                            <td>${catalogProdOfferId}</td>
+                            <td>${catalogProdOfferName}</td>
+                            <td>${catalogAddressDetail.city.name}</td>
+                            <td>${catalogAddressDetail.description}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        `,
       });
     }
   }
