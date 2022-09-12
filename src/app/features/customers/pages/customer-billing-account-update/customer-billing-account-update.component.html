@@ -9,11 +9,11 @@
       </div>
     </div>
   </div>
-  <app-main-layout [layoutTitle]="'Update Customer'">
+  <app-main-layout [layoutTitle]="'Create Customer'">
     <div class="e-customer-content mb-5 container-fluid">
       <form *ngIf="accountForm" [formGroup]="accountForm">
         <div class="row">
-          <h5 class="mt-3">Update Billing Account</h5>
+          <h5 class="mt-3">Create Billing Account</h5>
           <div class="col-12">
             <div class="row e-customer-input">
               <div
@@ -39,7 +39,7 @@
                 class="p-error block ng-invalid ng-dirty"
                 style="color: red; margin-left: 487px"
               >
-                required fields must be filled.
+                compulsory fields must be filled.
               </small>
             </div>
           </div>
@@ -55,7 +55,8 @@
               >
                 <textarea
                   class="e-address-desc"
-                  formControlName="description"
+                  placeholder=""
+                  formControlName="accountDescription"
                   [ngClass]="{
                     'invalid-input':
                       isEmpty && accountForm.controls['description'].errors
@@ -67,7 +68,7 @@
                 class="p-error block ng-invalid ng-dirty"
                 style="color: red"
               >
-                required fields must be filled.
+                compulsory fields must be filled.
               </small>
             </div>
           </div>
@@ -83,10 +84,12 @@
               <table class="e-table table table-bordered table-hidden">
                 <thead>
                   <tr class="table-title">
-                    <th>City</th>
-                    <th>Street Name</th>
-                    <th>House/Flat Number</th>
-                    <th>Address Description</th>
+                    <th class="col-2">City</th>
+                    <th class="col-2">Street Name</th>
+
+                    <th class="col-2">House/Flat Number</th>
+                    <th class="col-2">Address Description</th>
+                    <th class="col-2">Action</th>
                   </tr>
                 </thead>
                 <tbody class="table-body">
@@ -96,25 +99,92 @@
                       else customerAddressList
                     "
                   >
-                    <th>Null</th>
-                    <td>Null</td>
-                    <td>Null</td>
-                    <td>Null</td>
-                  </tr>
-                  <ng-template #customerAddressList>
-                    <tr *ngFor="let billingadr of billingAdress">
-                      <th style="display: flex">
-                        <div>
-                          <button etiyaButton="edit"></button>
-                          <button etiyaButton="remove"></button>
+                    <th>
+                      <div class="row">
+                        <div class="col-2 d-flex justify-content-end">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="flexRadioDefault"
+                            id="flexRadioDefault1"
+                            (change)="handleConfigInput($event)"
+                            value="{{ addresses.id }}"
+                            [checked]="
+                              billingAdress && billingAdress.length <= 1
+                            "
+                            [disabled]="
+                              addresses.isPrimary == true &&
+                              this.customer.addresses &&
+                              this.customer.addresses.length <= 1
+                            "
+                          />
+
+                          <label
+                            class="form-check-label"
+                            for="flexRadioDefault1"
+                          >
+                          </label>
                         </div>
-                        <div style="margin-left: 50px">
-                          {{ billingadr.city.name }}
+                        <div class="col-10 e-city-name">
+                          {{ addresses.city.name }}
+                        </div>
+                      </div>
+                    </th>
+                    <td>{{ addresses.street }}</td>
+                    <td>{{ addresses.flatNumber }}</td>
+                    <td>{{ addresses.description }}</td>
+                    <td class="d-flex justify-content-center">
+                      <button
+                        (click)="selectAddressId(addresses.id)"
+                        etiyaButton="edit"
+                        [disabled]="!billingAdress || billingAdress.length == 0"
+                      ></button>
+                      <button
+                        (click)="removePopup(addresses)"
+                        etiyaButton="remove"
+                      ></button>
+                    </td>
+                  </tr>
+
+                  <ng-template #customerAddressList>
+                    <tr *ngFor="let billingadr of newAddress">
+                      <th>
+                        <div class="row">
+                          <div class="col-2 d-flex justify-content-end">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                              (change)="handleConfigInput($event)"
+                              value="{{ billingadr.id }}"
+                              [checked]="primaryAddres == billingadr.id"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                            </label>
+                          </div>
+                          <div class="col-10 e-city-name">
+                            {{ billingadr.city.name }}
+                          </div>
                         </div>
                       </th>
                       <td>{{ billingadr.street }}</td>
                       <td>{{ billingadr.flatNumber }}</td>
                       <td>{{ billingadr.description }}</td>
+                      <td class="d-flex justify-content-center">
+                        <button
+                          (click)="selectAddressId(billingadr.id)"
+                          etiyaButton="edit"
+                        ></button>
+                        <button
+                          [disabled]="primaryAddres == billingadr.id"
+                          (click)="removePopup(billingadr)"
+                          etiyaButton="remove"
+                        ></button>
+                      </td>
                     </tr>
                   </ng-template>
                 </tbody>
@@ -130,11 +200,11 @@
           <div class="row mt-5 w-75">
             <div class="col-12 col-lg-6 d-flex justify-content-lg-start">
               <button etiyaButton="clear" (click)="goToPreviousPage()">
-                CANCEL
+                PREVIOUS
               </button>
             </div>
             <div class="col-12 col-lg-5 d-flex justify-content-lg-end">
-              <button etiyaButton="clear" (click)="update()">Create</button>
+              <button etiyaButton="clear" (click)="add()">Create</button>
             </div>
           </div>
         </div>
@@ -151,8 +221,8 @@
                   <div class="e-dropdown">
                     <select
                       etiyaInput="dark"
-                      name="gender"
-                      id="gender"
+                      name="city"
+                      id="city"
                       formControlName="city"
                       [ngClass]="{
                         'invalid-input':
@@ -162,7 +232,7 @@
                       <option selected disabled hidden value="">
                         Choose a city
                       </option>
-                      <option *ngFor="let city of cityList" [ngValue]="city">
+                      <option *ngFor="let city of cityList" [value]="city.id">
                         {{ city.name }}
                       </option>
                     </select>
@@ -172,7 +242,7 @@
                     class="p-error block ng-invalid ng-dirty"
                     style="color: red"
                   >
-                    required fields must be filled.
+                    compulsory fields must be filled.
                   </small>
                 </div>
               </div>
@@ -200,7 +270,7 @@
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-left: 288px"
                 >
-                  required fields must be filled.
+                  compulsory fields must be filled.
                 </small>
               </div>
             </div>
@@ -227,7 +297,7 @@
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-left: 203px"
                 >
-                  required fields must be filled.
+                  compulsory fields must be filled.
                 </small>
               </div>
             </div>
@@ -241,7 +311,6 @@
                 <div class="col-12 e-address-col-center">
                   <textarea
                     class="e-address-desc"
-                    placeholder=""
                     formControlName="description"
                     [ngClass]="{
                       'invalid-input':
@@ -254,7 +323,7 @@
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red"
                 >
-                  required fields must be filled.
+                  compulsory fields must be filled.
                 </small>
               </div>
             </div>
@@ -270,7 +339,9 @@
                 class="col-12 col-lg-5 d-flex justify-content-lg-end"
                 style="margin-left: 72px"
               >
-                <button etiyaButton="clear" (click)="addAddress()">SAVE</button>
+                <button etiyaButton="clear" (click)="saveAddress()">
+                  SAVE
+                </button>
               </div>
             </div>
           </div>
