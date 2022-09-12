@@ -32,12 +32,12 @@
                         </option>
                       </select>
                     </div>
-                    <div
-                      *ngIf="isShown && addressForm.get('city')?.errors"
-                      style="color: red; margin-left: 15px; margin-top: -15px"
-                    >
-                      Compulsory fields must be filled
-                    </div>
+                  </div>
+                  <div
+                    *ngIf="isShown && addressForm.get('city')?.errors"
+                    style="color: red; margin-left: 358px"
+                  >
+                    required fields must be filled
                   </div>
                 </div>
               </div>
@@ -60,7 +60,7 @@
                     *ngIf="isShown && addressForm.get('flatNumber')?.errors"
                     style="color: red; margin-left: 501px"
                   >
-                    Compulsory fields must be filled
+                    required fields must be filled
                   </div>
                 </div>
               </div>
@@ -82,9 +82,9 @@
                 </div>
                 <div
                   *ngIf="isShown && addressForm.get('street')?.errors"
-                  style="color: red; margin-left: 140px"
+                  style="color: red; margin-left: 182px"
                 >
-                  Compulsory fields must be filled
+                  required fields must be filled
                 </div>
               </div>
               <div class="col-12">
@@ -105,7 +105,7 @@
                     *ngIf="isShown && addressForm.get('description')?.errors"
                     style="color: red"
                   >
-                    Compulsory fields must be filled
+                    required fields must be filled
                   </div>
                 </div>
               </div>

@@ -24,14 +24,10 @@
           "description": "6128 Jay Alley"
         },
         {
-          "id": 2,
-          "city": {
-            "id": 1,
-            "name": "Adana"
-          },
-          "street": "Oak Valley",
-          "flatNumber": 18,
-          "description": "68 Hudson Street"
+          "street": "",
+          "flatNumber": "",
+          "description": "",
+          "id": 9437
         }
       ],
       "contactMedium": {
@@ -226,6 +222,12 @@
           "street": "Ilene",
           "flatNumber": 8,
           "description": "233 Trailsway Park"
+        },
+        {
+          "street": "",
+          "flatNumber": "",
+          "description": "",
+          "id": 9132
         }
       ],
       "contactMedium": {
@@ -610,16 +612,6 @@
       "motherName": "Betteanne",
       "fatherName": "Tades",
       "addresses": [
-        {
-          "id": 1,
-          "city": {
-            "id": 3,
-            "name": "Afyonkarahisar"
-          },
-          "street": "Killdeer",
-          "flatNumber": 3,
-          "description": "7 Badeau Pass"
-        },
         {
           "id": 2,
           "city": {

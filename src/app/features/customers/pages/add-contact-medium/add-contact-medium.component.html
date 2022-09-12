@@ -57,7 +57,7 @@
                     class="e-contact-input"
                     formControlName="homePhone"
                     mask="(000) 000-0000"
-                    maxlength="10"
+                    max="10"
                     [ngClass]="{
                       'invalid-input':
                         isShow && contactForm.controls['homePhone'].errors
@@ -87,7 +87,7 @@
                     class="e-contact-input"
                     formControlName="mobilePhone"
                     mask="(000) 000-0000"
-                    maxlength="10"
+                    max="10"
                     [ngClass]="{
                       'invalid-input':
                         isShow && contactForm.controls['mobilePhone'].errors
