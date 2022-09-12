@@ -19,6 +19,7 @@ export class AddCustomerAddressComponent implements OnInit {
   customer!: Customer;
   addressToUpdate!: Address;
   cityList!: City[];
+  isShown: Boolean = false;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -132,36 +133,41 @@ export class AddCustomerAddressComponent implements OnInit {
   }
 
   update() {
-    const addressToUpdate: Address = {
-      ...this.addressForm.value,
-      id: this.selectedAddressId,
-      city: this.cityList.find(
-        (city) => city.id == this.addressForm.value.city
-      ),
-    };
-    this.customerService
-      .updateAddress(addressToUpdate, this.customer)
-      .subscribe({
-        next: (data) => {
-          this.messageService.add({
-            detail: 'Sucsessfully added',
-            severity: 'success',
-            summary: 'Update',
-            key: 'etiya-custom',
-          });
-          this.router.navigateByUrl(
-            `/dashboard/customers/customer-address/${data.id}`
-          );
-        },
-        error: (err) => {
-          this.messageService.add({
-            detail: 'Error created',
-            severity: 'danger',
-            summary: 'Error',
-            key: 'etiya-custom',
-          });
-        },
-      });
+    if (this.addressForm.valid) {
+      this.isShown = false;
+      const addressToUpdate: Address = {
+        ...this.addressForm.value,
+        id: this.selectedAddressId,
+        city: this.cityList.find(
+          (city) => city.id == this.addressForm.value.city
+        ),
+      };
+      this.customerService
+        .updateAddress(addressToUpdate, this.customer)
+        .subscribe({
+          next: (data) => {
+            this.messageService.add({
+              detail: 'Sucsessfully added',
+              severity: 'success',
+              summary: 'Update',
+              key: 'etiya-custom',
+            });
+            this.router.navigateByUrl(
+              `/dashboard/customers/customer-address/${data.id}`
+            );
+          },
+          error: (err) => {
+            this.messageService.add({
+              detail: 'Error created',
+              severity: 'danger',
+              summary: 'Error',
+              key: 'etiya-custom',
+            });
+          },
+        });
+    } else {
+      this.isShown = true;
+    }
   }
   cancelChanges() {
     this.messageService.add({

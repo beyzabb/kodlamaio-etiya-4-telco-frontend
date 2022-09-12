@@ -33,19 +33,15 @@ export class AddContactMediumComponent implements OnInit {
     this.contactForm = this.formBuilder.group({
       email: [
         this.customer.contactMedium?.email,
-        [
-          Validators.email,
-          Validators.required,
-          Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$'),
-        ],
+        [Validators.email, Validators.required],
       ],
       homePhone: [
         this.customer.contactMedium?.homePhone,
-        [Validators.pattern('^[0-9]{12}$')],
+        [Validators.pattern('^[0-9]{10}$')],
       ],
       mobilePhone: [
         this.customer.contactMedium?.mobilePhone,
-        [Validators.pattern('^[0-9]{12}$'), Validators.required],
+        [Validators.required, Validators.pattern('^[0-9]{10}$')],
       ],
       fax: [
         this.customer.contactMedium?.fax,
@@ -64,10 +60,9 @@ export class AddContactMediumComponent implements OnInit {
   }
 
   saveCustomer() {
+    console.log(this.contactForm);
     if (this.contactForm.valid) {
       this.isShow = false;
-      this.isFax = false;
-      this.isPhoneNumber = false;
       this.saveContactMediumToStore();
       this.customersService.add(this.customer).subscribe({
         next: (data) => {
@@ -89,15 +84,7 @@ export class AddContactMediumComponent implements OnInit {
         },
       });
     } else {
-      if (this.contactForm.get('mobilePhone')?.value) {
-        this.isPhoneNumber = true;
-        this.isShow = true;
-        this.isFax = false;
-      } else {
-        this.isPhoneNumber = false;
-        this.isShow = true;
-        this.isFax = true;
-      }
+      this.isShow = true;
     }
   }
   isNumber(event: any): boolean {

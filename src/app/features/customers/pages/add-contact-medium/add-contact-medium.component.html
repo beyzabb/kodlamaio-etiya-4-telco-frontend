@@ -53,10 +53,11 @@
                   <input
                     type="text"
                     etiyaInput="dark"
-                    onKeyPress="if(this.value.length==12) return false;"
                     appPhoneMask
                     class="e-contact-input"
                     formControlName="homePhone"
+                    mask="(000) 000-0000"
+                    maxlength="10"
                     [ngClass]="{
                       'invalid-input':
                         isShow && contactForm.controls['homePhone'].errors
@@ -82,37 +83,19 @@
                 <div class="col-12 col-lg-8 e-contact-col-center">
                   <input
                     type="text"
-                    appPhoneMask
-                    onKeyPress="if(this.value.length==12) return false;"
                     etiyaInput="dark"
                     class="e-contact-input"
                     formControlName="mobilePhone"
+                    mask="(000) 000-0000"
+                    maxlength="10"
                     [ngClass]="{
                       'invalid-input':
-                        (isShow &&
-                          contactForm.controls['mobilePhone'].errors &&
-                          !isPhoneNumber) ||
-                        (isShow && isPhoneNumber)
+                        isShow && contactForm.controls['mobilePhone'].errors
                     }"
                   />
                 </div>
                 <small
-                  *ngIf="
-                    isShow &&
-                    contactForm.controls['mobilePhone'].errors &&
-                    !isPhoneNumber
-                  "
-                  class="p-error block ng-invalid ng-dirty"
-                  style="color: red; margin-top: 11px; margin-left: 400px"
-                >
-                  compulsory fields must be filled.
-                </small>
-                <small
-                  *ngIf="
-                    isPhoneNumber &&
-                    isShow &&
-                    contactForm.controls['mobilePhone'].errors
-                  "
+                  *ngIf="isShow && contactForm.controls['mobilePhone'].errors"
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-top: 11px; margin-left: 400px"
                 >
@@ -134,12 +117,12 @@
                     onKeyPress="if(this.value.length==7) return false;"
                     [ngClass]="{
                       'invalid-input':
-                        isFax && isShow && contactForm.controls['fax'].errors
+                        isShow && contactForm.controls['fax'].errors
                     }"
                   />
                 </div>
                 <small
-                  *ngIf="isFax && isShow && contactForm.controls['fax'].errors"
+                  *ngIf="isShow && contactForm.controls['fax'].errors"
                   class="p-error block ng-invalid ng-dirty"
                   style="color: red; margin-top: 11px; margin-left: 400px"
                 >

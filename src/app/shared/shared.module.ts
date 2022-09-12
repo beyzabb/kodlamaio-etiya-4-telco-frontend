@@ -1,3 +1,4 @@
+import { NgxMaskModule } from 'ngx-mask';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { OverlayTitleComponent } from './components/overlay-title/overlay-title.component';
@@ -36,8 +37,6 @@ import { StoreModule } from '@ngrx/store';
 import { sharedReducers } from './store/shared.reducers';
 import { OfferDetailPopUpComponent } from './components/offer-detail-pop-up/offer-detail-pop-up.component';
 import { DialogModule } from 'primeng/dialog';
-import { CustomersModule } from '../features/customers/customers.module';
-import { PhoneMaskDirective } from './directives/phone-mask.directive';
 
 @NgModule({
   declarations: [
@@ -68,9 +67,9 @@ import { PhoneMaskDirective } from './directives/phone-mask.directive';
     TableScrollComponent,
     TableAccordionHeaderComponent,
     OfferDetailPopUpComponent,
-    PhoneMaskDirective,
   ],
   imports: [
+    NgxMaskModule.forRoot(),
     CommonModule,
     ToastModule,
     ButtonModule,
@@ -107,6 +106,6 @@ import { PhoneMaskDirective } from './directives/phone-mask.directive';
     TableAccordionHeaderComponent,
     OfferDetailPopUpComponent,
   ],
-  providers: [MessageService, PhoneMaskDirective],
+  providers: [MessageService],
 })
 export class SharedModule {}

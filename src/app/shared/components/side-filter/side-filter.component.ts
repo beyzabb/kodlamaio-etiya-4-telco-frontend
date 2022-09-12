@@ -31,7 +31,7 @@ export class SideFilterComponent implements OnInit {
       nationalityId: [''],
       customerId: [''],
       accountNumber: [''],
-      gsmNumber: [''],
+      gsmNumber: ['', Validators.pattern('^[0-9]{10}$')],
       firstName: [''],
       lastName: [''],
       orderNumber: [''],
