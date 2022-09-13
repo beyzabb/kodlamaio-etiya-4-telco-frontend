@@ -71,6 +71,7 @@
       <input
         type="text"
         etiyaInput="dark"
+        (keypress)="isNumber($event)"
         formControlName="orderNumber"
         #orderNumber
       />
