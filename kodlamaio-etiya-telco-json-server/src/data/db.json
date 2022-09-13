@@ -6,9 +6,9 @@
       "firstName": "Prudi",
       "middleName": "Meta",
       "lastName": "Gronw",
-      "birthDate": "0333-01-01",
+      "birthDate": "1999-01-01",
       "gender": "Female",
-      "nationalityId": 48776304564,
+      "nationalityId": 12345678911,
       "role": "cooperative",
       "motherName": "Hannah",
       "fatherName": "Chris",
@@ -221,7 +221,8 @@
           },
           "street": "Ilene",
           "flatNumber": 8,
-          "description": "233 Trailsway Park"
+          "description": "233 Trailsway Park",
+          "isPrimary": true
         }
       ],
       "contactMedium": {
@@ -233,10 +234,7 @@
       "billingAccounts": [
         {
           "id": 1,
-          "accountNumber": "1731959672",
           "accountName": "turpis",
-          "description": "Sed ante.",
-          "status": "active",
           "addresses": [
             {
               "city": {
@@ -341,14 +339,14 @@
                 }
               ]
             }
-          ]
+          ],
+          "accountNumber": "1731959672",
+          "description": "Sed ante.",
+          "status": "active"
         },
         {
           "id": 2,
-          "accountNumber": "7003545349",
           "accountName": "nibh",
-          "description": "Donec semper sapien a libero.",
-          "status": "passive",
           "addresses": [
             {
               "city": {
@@ -429,11 +427,14 @@
                 }
               ]
             }
-          ]
+          ],
+          "accountNumber": "7003545349",
+          "description": "Donec semper sapien a libero.",
+          "status": "passive"
         },
         {
+          "id": 3725,
           "accountName": "nfgkzjdg",
-          "accountDescription": "dsgmds gd",
           "addresses": [
             {
               "id": 12,
@@ -446,13 +447,12 @@
               "description": "şlmkn b"
             }
           ],
-          "status": "active",
           "accountNumber": "195644587",
-          "id": 3725
+          "status": "active"
         },
         {
+          "id": 3286,
           "accountName": "kvlnsdvkds",
-          "accountDescription": "kvmz  dföö",
           "addresses": [
             {
               "id": 662,
@@ -465,30 +465,73 @@
               "description": "çöm nbvbnklşmn "
             }
           ],
-          "status": "active",
           "accountNumber": "513672958",
-          "id": 3286
+          "status": "passive"
         },
         {
-          "accountName": "aaa",
-          "accountDescription": "aaaa",
+          "accountName": "gdfgd",
+          "description": "gfdgfdgf",
           "addresses": [
             {
-              "id": 860,
+              "id": 1,
               "city": {
-                "id": 3,
-                "name": "Afyonkarahisar"
+                "id": 9,
+                "name": "Ardahan"
               },
-              "street": "aaaaaaaaa",
-              "flatNumber": "aaaaaaaa",
-              "description": "aaaaaaaaa"
+              "street": "Ilene",
+              "flatNumber": 8,
+              "description": "233 Trailsway Park",
+              "isPrimary": true
+            },
+            {
+              "id": 1,
+              "city": {
+                "id": 9,
+                "name": "Ardahan"
+              },
+              "street": "Ilene",
+              "flatNumber": 8,
+              "description": "233 Trailsway Park",
+              "isPrimary": true
             }
           ],
+          "accountNumber": "506713928",
           "status": "active",
-          "accountNumber": "432928791",
-          "id": 4851
+          "id": 999
         }
       ]
+    },
+    {
+      "id": 3,
+      "customerId": 3,
+      "firstName": "Codee",
+      "middleName": "Lena",
+      "lastName": "Gartan",
+      "birthDate": "9/29/1997",
+      "gender": "Female",
+      "nationalityId": 67712315360,
+      "role": "individual",
+      "motherName": "Halie",
+      "fatherName": "Martin",
+      "addresses": [
+        {
+          "id": 1,
+          "city": {
+            "id": 9,
+            "name": "Seattle"
+          },
+          "street": "Waxwing",
+          "flatNumber": 16,
+          "description": "4 Golden Leaf Place"
+        }
+      ],
+      "contactMedium": {
+        "email": "mgartan2@blogger.com",
+        "homePhone": "92836185669",
+        "mobilePhone": "54409421507",
+        "fax": "26695290867"
+      },
+      "billingAccounts": []
     },
     {
       "id": 4,
@@ -2617,6 +2660,41 @@
       "billingAccounts": [],
       "type": "[CustomerToAdd] Set Demographic Info",
       "id": 21
+    },
+    {
+      "customerId": 9999,
+      "firstName": "tert",
+      "middleName": null,
+      "lastName": "hfgh",
+      "birthDate": "1999-01-25",
+      "gender": "Female",
+      "nationalityId": 55555555555,
+      "role": "individual",
+      "motherName": null,
+      "fatherName": null,
+      "addresses": [
+        {
+          "city": {
+            "id": 7,
+            "name": "Ankara"
+          },
+          "street": "Obere Str. 57",
+          "flatNumber": "hgfhgfh",
+          "description": "Obere Str. 57",
+          "id": 1,
+          "type": "[CustomerToAdd] Update Address Info"
+        }
+      ],
+      "contactMedium": {
+        "email": "beyza@gmail.com",
+        "homePhone": "5555555555",
+        "mobilePhone": "5555555555",
+        "fax": 7777777,
+        "type": "[CustomerToAdd] Set ContactMedium Info"
+      },
+      "billingAccounts": [],
+      "type": "[CustomerToAdd] Set Demographic Info",
+      "id": 22
     }
   ],
   "offers": [
