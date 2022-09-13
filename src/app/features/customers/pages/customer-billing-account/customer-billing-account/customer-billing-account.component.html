@@ -88,6 +88,7 @@
                     <th>Street Name</th>
                     <th>House/Flat Number</th>
                     <th>Address Description</th>
+                    <th>Action</th>
                   </tr>
                 </thead>
                 <tbody class="table-body">
@@ -97,31 +98,92 @@
                       else customerAddressList
                     "
                   >
-                    <th>Null</th>
-                    <td>Null</td>
-                    <td>Null</td>
-                    <td>Null</td>
-                  </tr>
-                  <ng-template #customerAddressList>
-                    <tr *ngFor="let billingadr of billingAdress">
-                      <th style="display: flex">
-                        <div>
-                          <button
-                            etiyaButton="edit"
-                            (click)="selectAddressId(billingadr.id)"
-                          ></button>
-                          <button
-                            etiyaButton="remove"
-                            (click)="removePopup(billingadr)"
-                          ></button>
+                    <th>
+                      <div class="row">
+                        <div class="col-2 d-flex justify-content-end">
+                          <input
+                            class="form-check-input"
+                            type="radio"
+                            name="flexRadioDefault"
+                            id="flexRadioDefault1"
+                            (change)="handleConfigInput($event)"
+                            value="{{ addresses.id }}"
+                            [checked]="
+                              billingAdress && billingAdress.length <= 1
+                            "
+                            [disabled]="
+                              addresses.isPrimary == true &&
+                              this.customer.addresses &&
+                              this.customer.addresses.length <= 1
+                            "
+                          />
+
+                          <label
+                            class="form-check-label"
+                            for="flexRadioDefault1"
+                          >
+                          </label>
                         </div>
-                        <div style="margin-left: 50px">
-                          {{ billingadr.city.name }}
+                        <div class="col-10 e-city-name">
+                          {{ addresses.city.name }}
+                        </div>
+                      </div>
+                    </th>
+                    <td>{{ addresses.street }}</td>
+                    <td>{{ addresses.flatNumber }}</td>
+                    <td>{{ addresses.description }}</td>
+                    <td class="d-flex justify-content-center">
+                      <button
+                        (click)="selectAddressId(addresses.id)"
+                        etiyaButton="edit"
+                        [disabled]="!billingAdress || billingAdress.length == 0"
+                      ></button>
+                      <button
+                        (click)="removePopup(addresses)"
+                        etiyaButton="remove"
+                      ></button>
+                    </td>
+                  </tr>
+
+                  <ng-template #customerAddressList>
+                    <tr *ngFor="let billingadr of newAddress">
+                      <th>
+                        <div class="row">
+                          <div class="col-2 d-flex justify-content-end">
+                            <input
+                              class="form-check-input"
+                              type="radio"
+                              name="flexRadioDefault"
+                              id="flexRadioDefault1"
+                              (change)="handleConfigInput($event)"
+                              value="{{ billingadr.id }}"
+                              [checked]="primaryAddres == billingadr.id"
+                            />
+                            <label
+                              class="form-check-label"
+                              for="flexRadioDefault1"
+                            >
+                            </label>
+                          </div>
+                          <div class="col-10 e-city-name">
+                            {{ billingadr.city.name }}
+                          </div>
                         </div>
                       </th>
                       <td>{{ billingadr.street }}</td>
                       <td>{{ billingadr.flatNumber }}</td>
                       <td>{{ billingadr.description }}</td>
+                      <td class="d-flex justify-content-center">
+                        <button
+                          (click)="selectAddressId(billingadr.id)"
+                          etiyaButton="edit"
+                        ></button>
+                        <button
+                          [disabled]="primaryAddres == billingadr.id"
+                          (click)="removePopup(billingadr)"
+                          etiyaButton="remove"
+                        ></button>
+                      </td>
                     </tr>
                   </ng-template>
                 </tbody>

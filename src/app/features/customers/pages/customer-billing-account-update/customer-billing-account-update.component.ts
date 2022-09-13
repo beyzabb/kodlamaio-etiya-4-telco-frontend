@@ -212,6 +212,10 @@ export class CustomerBillingAccountUpdateComponent implements OnInit {
         ...this.accountForm.value,
         addresses: [...this.billingAdress, this.addresses],
       };
+      newBillingAccount.accountNumber = String(
+        Math.floor(Math.random() * 1000000000)
+      );
+      newBillingAccount.status = 'active';
       this.customerService
         .addBillingAccount(newBillingAccount, this.customer)
         .subscribe();
@@ -298,9 +302,6 @@ export class CustomerBillingAccountUpdateComponent implements OnInit {
   }
 
   remove() {
-    // if (!this.newAddress) {
-    //   this.newAddress = [this.addresses];
-    // }
     this.newAddress = this.newAddress.filter(
       (b) => b.id != this.addressToDelete.id
     );
