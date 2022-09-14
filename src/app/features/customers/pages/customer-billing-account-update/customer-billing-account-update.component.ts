@@ -65,6 +65,8 @@ export class CustomerBillingAccountUpdateComponent implements OnInit {
   getParams() {
     this.activatedRoute.params.subscribe((params) => {
       if (params['id']) this.selectedCustomerId = Number(params['id']);
+      if (params['billingId'])
+        this.selectedBillingId = Number(params['billingId']);
       this.getCustomerById();
     });
   }
@@ -77,6 +79,9 @@ export class CustomerBillingAccountUpdateComponent implements OnInit {
         .getCustomerById(this.selectedCustomerId)
         .subscribe((data) => {
           this.customer = data;
+          this.billingAccount = data.billingAccounts?.find((data) => {
+            return data.id == this.selectedBillingId;
+          });
           if (data.addresses) {
             this.newAddress = data.addresses.filter(
               (c) => c.isPrimary === true
@@ -92,8 +97,8 @@ export class CustomerBillingAccountUpdateComponent implements OnInit {
   }
   createAccountForm() {
     this.accountForm = this.formBuilder.group({
-      accountName: ['', Validators.required],
-      description: ['', Validators.required],
+      accountName: [this.billingAccount?.accountName, Validators.required],
+      description: [this.billingAccount?.description, Validators.required],
     });
   }
 
