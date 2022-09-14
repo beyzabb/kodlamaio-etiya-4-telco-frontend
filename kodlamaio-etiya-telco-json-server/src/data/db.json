@@ -33,7 +33,7 @@
           "street": "Oak Valley",
           "flatNumber": 6,
           "description": "6128 Jay Alley",
-          "isPrimary": true
+          "isPrimary": false
         }
       ],
       "contactMedium": {
@@ -45,10 +45,7 @@
       "billingAccounts": [
         {
           "id": 1,
-          "accountNumber": "5701683834",
           "accountName": "luctus",
-          "description": "Pellentesque at nulla.",
-          "status": "active",
           "addresses": [
             {
               "city": {
@@ -95,33 +92,14 @@
                 }
               ]
             }
-          ]
-        },
-        {
-          "id": 2,
-          "accountNumber": "7536678460",
-          "accountName": "ipsum",
-          "description": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est.",
-          "status": "passive",
-          "addresses": [
-            {
-              "city": {
-                "id": 10,
-                "name": "Artvin"
-              },
-              "street": "Sommers",
-              "flatNumber": 15,
-              "description": "5 Doe Crossing Plaza"
-            }
           ],
-          "orders": []
+          "accountNumber": "5701683834",
+          "description": "Pellentesque at nulla.",
+          "status": "active"
         },
         {
           "id": 3,
-          "accountNumber": "7846906097",
           "accountName": "aliquet",
-          "description": "In sagittis dui vel nisl.",
-          "status": "active",
           "addresses": [
             {
               "city": {
@@ -196,7 +174,52 @@
                 }
               ]
             }
-          ]
+          ],
+          "accountNumber": "7846906097",
+          "description": "In sagittis dui vel nisl.",
+          "status": "active"
+        },
+        {
+          "accountName": "tertre",
+          "description": "terteter",
+          "addresses": [
+            {
+              "id": 1,
+              "city": {
+                "id": 1,
+                "name": "Adana"
+              },
+              "street": "Granby",
+              "flatNumber": 6,
+              "description": "6128 Jay Alley",
+              "isPrimary": false
+            },
+            {
+              "id": 254,
+              "city": {
+                "id": 3,
+                "name": "Afyonkarahisar"
+              },
+              "street": "tertre",
+              "flatNumber": "terte",
+              "description": "terter",
+              "isPrimary": true
+            },
+            {
+              "id": 1,
+              "city": {
+                "id": 1,
+                "name": "Adana"
+              },
+              "street": "Granby",
+              "flatNumber": 6,
+              "description": "6128 Jay Alley",
+              "isPrimary": false
+            }
+          ],
+          "accountNumber": "679082961",
+          "status": "active",
+          "id": 6032
         }
       ]
     },
@@ -222,7 +245,7 @@
           "street": "Ilene",
           "flatNumber": 8,
           "description": "233 Trailsway Park",
-          "isPrimary": true
+          "isPrimary": false
         }
       ],
       "contactMedium": {
@@ -430,7 +453,7 @@
           ],
           "accountNumber": "7003545349",
           "description": "Donec semper sapien a libero.",
-          "status": "passive"
+          "status": "active"
         },
         {
           "id": 3725,
@@ -466,11 +489,11 @@
             }
           ],
           "accountNumber": "513672958",
-          "status": "passive"
+          "status": "active"
         },
         {
-          "accountName": "gdfgd",
-          "description": "gfdgfdgf",
+          "accountName": "hfghgf",
+          "description": "hfghfg",
           "addresses": [
             {
               "id": 1,
@@ -481,6 +504,17 @@
               "street": "Ilene",
               "flatNumber": 8,
               "description": "233 Trailsway Park",
+              "isPrimary": false
+            },
+            {
+              "id": 918,
+              "city": {
+                "id": 6,
+                "name": "Amasya"
+              },
+              "street": "jghjghjg",
+              "flatNumber": "jhgjg",
+              "description": "jghjgj",
               "isPrimary": true
             },
             {
@@ -492,12 +526,12 @@
               "street": "Ilene",
               "flatNumber": 8,
               "description": "233 Trailsway Park",
-              "isPrimary": true
+              "isPrimary": false
             }
           ],
-          "accountNumber": "506713928",
+          "accountNumber": "429011507",
           "status": "active",
-          "id": 999
+          "id": 4025
         }
       ]
     },
@@ -2695,6 +2729,111 @@
       "billingAccounts": [],
       "type": "[CustomerToAdd] Set Demographic Info",
       "id": 22
+    },
+    {
+      "customerId": 9999,
+      "firstName": "Maria",
+      "middleName": null,
+      "lastName": "Anders",
+      "birthDate": "1999-04-25",
+      "gender": "Female",
+      "nationalityId": 12345678912,
+      "role": "individual",
+      "motherName": null,
+      "fatherName": null,
+      "addresses": [
+        {
+          "city": {
+            "id": 2,
+            "name": "Adıyaman"
+          },
+          "street": "bgbvc",
+          "flatNumber": "bfbfg",
+          "description": "bfbfdb",
+          "id": 1,
+          "type": "[CustomerToAdd] Update Address Info"
+        }
+      ],
+      "contactMedium": {
+        "email": "beyza@gmail.com",
+        "homePhone": "1111111111",
+        "mobilePhone": "1111111111",
+        "fax": 8888888,
+        "type": "[CustomerToAdd] Set ContactMedium Info"
+      },
+      "billingAccounts": [],
+      "type": "[CustomerToAdd] Set Demographic Info",
+      "id": 23
+    },
+    {
+      "customerId": 9999,
+      "firstName": "hygfhf",
+      "middleName": null,
+      "lastName": "hfghgf",
+      "birthDate": "1999-02-01",
+      "gender": "Female",
+      "nationalityId": 11111111111,
+      "role": "individual",
+      "motherName": null,
+      "fatherName": null,
+      "addresses": [
+        {
+          "city": {
+            "id": 4,
+            "name": "Ağrı"
+          },
+          "street": "gfdgfd",
+          "flatNumber": "gfdgdf",
+          "description": "gdfgdfgf",
+          "id": 1,
+          "type": "[CustomerToAdd] Add Address Info"
+        }
+      ],
+      "contactMedium": {
+        "email": "beyza@gmail.com",
+        "homePhone": "1111111111",
+        "mobilePhone": "1111111111",
+        "fax": 5555555,
+        "type": "[CustomerToAdd] Set ContactMedium Info"
+      },
+      "billingAccounts": [],
+      "type": "[CustomerToAdd] Set Demographic Info",
+      "id": 24
+    },
+    {
+      "customerId": 9999,
+      "firstName": "tertre",
+      "middleName": null,
+      "lastName": "trter",
+      "birthDate": "1999-01-25",
+      "gender": "Female",
+      "nationalityId": 22222222222,
+      "role": "individual",
+      "motherName": null,
+      "fatherName": null,
+      "addresses": [
+        {
+          "city": {
+            "id": 6,
+            "name": "Amasya"
+          },
+          "street": "gdfgdf",
+          "flatNumber": "gdfgdf",
+          "description": "gdfgdfg",
+          "id": 1,
+          "type": "[CustomerToAdd] Add Address Info"
+        }
+      ],
+      "contactMedium": {
+        "email": "beyza@gmail.com",
+        "homePhone": "1111111111",
+        "mobilePhone": "5555555555",
+        "fax": 6666666,
+        "type": "[CustomerToAdd] Set ContactMedium Info"
+      },
+      "billingAccounts": [],
+      "type": "[CustomerToAdd] Set Demographic Info",
+      "id": 25
     }
   ],
   "offers": [
